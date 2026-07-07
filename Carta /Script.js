@@ -349,3 +349,26 @@ function createPetal(){
 }
 
 setInterval(createPetal,2500);
+/*=========================
+Apertura Cinematográfica
+=========================*/
+
+window.addEventListener("load",()=>{
+
+const curtain=document.getElementById("curtain");
+
+setTimeout(()=>{
+
+curtain.style.transition="opacity 1.5s";
+
+curtain.style.opacity="0";
+
+setTimeout(()=>{
+
+curtain.remove();
+
+},1500);
+
+},3800);
+
+});

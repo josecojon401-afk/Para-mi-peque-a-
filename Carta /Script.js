@@ -242,3 +242,50 @@ opacity:0;
 `;
 
 document.head.appendChild(style);
+/*=============================
+   Destellos dorados
+=============================*/
+
+setInterval(()=>{
+
+    const star=document.createElement("div");
+
+    star.style.position="fixed";
+
+    star.style.width="3px";
+
+    star.style.height="3px";
+
+    star.style.borderRadius="50%";
+
+    star.style.background="#FFD86B";
+
+    star.style.left=Math.random()*window.innerWidth+"px";
+
+    star.style.top=Math.random()*window.innerHeight+"px";
+
+    star.style.boxShadow="0 0 15px #FFD86B";
+
+    star.style.opacity=".9";
+
+    star.style.pointerEvents="none";
+
+    star.style.transition="all 4s linear";
+
+    document.body.appendChild(star);
+
+    setTimeout(()=>{
+
+        star.style.transform="translateY(-80px)";
+
+        star.style.opacity="0";
+
+    },100);
+
+    setTimeout(()=>{
+
+        star.remove();
+
+    },4200);
+
+},350);

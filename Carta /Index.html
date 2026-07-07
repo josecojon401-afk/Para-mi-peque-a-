@@ -3,242 +3,281 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-    <title>Para Ti...</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="theme-color" content="#7B1234">
+<title>Para Ti...</title>
 
-    <link rel="icon" href="foto.jpg">
+<meta name="theme-color" content="#6E0F2C">
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
-    <!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
-    <!-- Cortinas Cinematográficas -->
+
+<!--=========================
+CORTINAS
+==========================-->
 
 <div id="curtain">
 
-    <div class="left-curtain"></div>
+<div class="left-curtain"></div>
 
-    <div class="right-curtain"></div>
+<div class="right-curtain"></div>
 
 </div>
 
-    <!-- Partículas -->
+<!--=========================
+PARTÍCULAS
+==========================-->
 
-    <div id="particles"></div>
+<div id="particles"></div>
 
-    <!-- Música -->
+<!--=========================
+MÚSICA
+==========================-->
 
-    <audio id="music" loop>
+<audio id="music" loop>
 
-        <source src="piano.mp3" type="audio/mpeg">
+<source src="piano.mp3" type="audio/mpeg">
 
-    </audio>
+</audio>
 
-    <!-- Pantalla 1 -->
+<!--=========================
+PORTADA
+==========================-->
+
 <section id="welcome" class="screen active">
 
-    <div class="light"></div>
+<div class="light"></div>
 
-    <div class="card deluxe">❤</div>
+<div class="card deluxe">
 
-        <h1>Para Ti...</h1>
+<div class="crystal-heart">
 
-        <div class="gold-line"></div>
+❤
 
-        <h2>
-            Hay palabras que nacen del corazón...
-        </h2>
+</div>
 
-        <p>
-            Esta carta fue escrita para que la leas cada vez que necesites
-            motivación e inspiración para iniciar tu día.
-        </p>
+<h1>
 
-        <button id="startBtn">
-            ✨ Comenzar la experiencia
-        </button>
+Para Ti...
 
-    </div>
+</h1>
+
+<div class="gold-line"></div>
+
+<h2>
+
+Hay palabras que nacen del corazón...
+
+</h2>
+
+<p>
+
+Esta carta fue escrita para que la leas cada vez que necesites motivación e inspiración para iniciar tu día.
+
+</p>
+
+<button id="startBtn">
+
+✨ Comenzar la experiencia
+
+</button>
+
+</div>
 
 </section>
-    
 
-    <!-- Pantalla 2 -->
+<!--=========================
+CONTRASEÑA
+==========================-->
 
-    <section id="login" class="screen">
+<section id="login" class="screen">
 
-        <div class="card">
+<div class="card">
 
-            <h1>Una pequeña llave</h1>
+<h1>
 
-            <p>
+Bienvenida
 
-                Solo quien conoce la palabra correcta podrá abrir esta carta.
+</h1>
 
-            </p>
+<div class="gold-line"></div>
 
-            <input
+<p>
 
-                id="password"
+Solo quien conoce la palabra correcta podrá descubrir el contenido de esta carta.
 
-                type="password"
+</p>
 
-                placeholder="Contraseña">
+<input
 
-            <button id="openBtn">
+id="password"
 
-                Abrir Carta
+type="password"
 
-            </button>
+placeholder="Ingresa la contraseña"
 
-            <p id="error"></p>
+autocomplete="off">
 
-        </div>
+<button id="openBtn">
 
-    </section>
+Abrir Carta
 
-    <!-- Pantalla 3 -->
+</button>
 
-    <section id="book" class="screen">
+<p id="error"></p>
 
-        <div class="book">
+</div>
 
-            <div class="page active">
+</section>
 
-                <h2>Para una amiga muy especial</h2>
+<!--=========================
+LIBRO
+==========================-->
 
-                <p>
+<section id="book" class="screen">
 
-                    Esta carta es para que la leas cada vez que necesites motivación e inspiración para iniciar tu día.
+<div class="book">
 
-                </p>
+<div class="page active">
 
-                <button class="next">
+<h2>
 
-                    Continuar
+Para una amiga muy especial
 
-                </button>
+</h2>
 
-            </div>
+<p>
 
-            <div class="page">
+Esta carta es para que la leas cada vez que necesites motivación e inspiración para iniciar tu día.
 
-                <p>
+</p>
 
-                    No importa cuántas veces te sientas triste o que no tengas ánimos, siempre habrá un motivo para levantarte.
+<button class="next">
 
-                </p>
+Siguiente →
 
-                <button class="next">
+</button>
 
-                    Continuar
+</div>
 
-                </button>
+<div class="page">
 
-            </div>
+<p>
 
-            <div class="page">
+No importa cuántas veces te sientas triste o que no tengas ánimos; siempre habrá un motivo para levantarte.
 
-                <p>
+</p>
 
-                    Quiero que recuerdes que nunca estarás sola.
+<button class="next">
 
-                    Siempre habrá alguien dispuesto a escucharte, abrazarte y recordarte lo valiosa que eres.
+Siguiente →
 
-                </p>
+</button>
 
-                <button class="next">
+</div>
 
-                    Continuar
+<div class="page">
 
-                </button>
+<p>
 
-            </div>
+Nunca olvides que eres una persona valiosa. Incluso en los días más difíciles, recuerda que cuentas con alguien dispuesto a escucharte, abrazarte y ayudarte a transformar tus lágrimas en una sonrisa.
 
-            <div class="page">
+</p>
 
-                <p>
+<button class="next">
 
-                    Si algún día vuelves a sentir que el mundo pesa demasiado, regresa aquí.
+Siguiente →
 
-                    Estas palabras siempre te estarán esperando.
+</button>
 
-                </p>
+</div>
 
-                <button class="next">
+<div class="page">
 
-                    Ver Final
+<p>
 
-                </button>
+Con todo mi cariño y aprecio, deseo que cada vez que regreses a esta carta encuentres paz, esperanza y la fuerza para continuar.
 
-            </div>
+</p>
 
-        </div>
+<button class="next">
 
-    </section>
+Ver Final
 
-    <!-- Pantalla Final -->
+</button>
 
-    <section id="final" class="screen">
+</div>
 
-        <div class="card">
+</div>
 
-            <img
+</section>
 
-                src="foto.jpg"
+<!--=========================
+FINAL
+==========================-->
 
-                class="photo"
+<section id="final" class="screen">
 
-                alt="Fotografía">
+<div class="card deluxe">
 
-            <h2>
+<img
 
-                Con todo mi cariño y aprecio...
+src="foto.jpg"
 
-            </h2>
+alt="Fotografía"
 
-            <h1>
+class="photo">
 
-                Oscar
+<h2>
 
-            </h1>
+Con todo mi cariño y aprecio...
 
-            <div class="heart">
+</h2>
 
-                ❤
+<h1>
 
-            </div>
+Oscar
 
-            <p>
+</h1>
 
-                Gracias por permitirme formar parte de tu historia.
+<div class="heart">
 
-            </p>
+❤
 
-            <button id="restart">
+</div>
 
-                Leer nuevamente
+<p>
 
-            </button>
+Si algún día vuelves a sentir que el mundo pesa demasiado...
 
-        </div>
+regresa aquí.
 
-    </section>
+Estas palabras siempre estarán esperándote.
 
-    <script src="script.js"></script>
+</p>
+
+<button id="restart">
+
+💝 Leer nuevamente
+
+</button>
+
+</div>
+
+</section>
+
+<script src="script.js"></script>
 
 </body>
 

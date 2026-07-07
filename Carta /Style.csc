@@ -1,150 +1,291 @@
-/* ==========================================
-   PARA TI - EDICIÓN DELUXE
-   style.css
-========================================== */
+/*====================================================
+    PARA TI - EDICIÓN DELUXE
+    VERSION 2.1
+====================================================*/
+
+
+/*==========================
+    VARIABLES
+==========================*/
 
 :root{
 
     --gold:#D4AF37;
-    --gold-light:#F8E39A;
+    --gold-light:#F6E7A8;
 
     --wine:#7B1234;
-    --wine-dark:#521024;
+    --wine-dark:#4D0D21;
 
-    --paper:#FDF9F3;
-
-    --black:#090909;
+    --paper:#FDF9F2;
 
     --white:#FFFFFF;
 
-    --shadow:0 20px 60px rgba(0,0,0,.45);
+    --text:#2C2C2C;
+
+    --shadow:
+    0 20px 60px rgba(0,0,0,.45);
 
 }
+
+
+/*==========================
+RESET
+==========================*/
 
 *{
+
     margin:0;
+
     padding:0;
+
     box-sizing:border-box;
+
 }
+
+
+/*==========================
+BODY
+==========================*/
 
 body{
 
-    background:
-    radial-gradient(circle at top,#38121F,#090909);
+    width:100%;
 
-    font-family:"Cormorant Garamond",serif;
-
-    color:var(--paper);
+    min-height:100vh;
 
     overflow:hidden;
 
+    background:
+    radial-gradient(circle at top,
+    #4A1023,
+    #18070F,
+    #090909);
+
+    color:white;
+
+    font-family:"Cormorant Garamond", serif;
+
+    position:relative;
+
 }
 
-/* ---------- Pantallas ---------- */
+
+/*==========================
+LUZ CENTRAL
+==========================*/
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+left:50%;
+
+top:50%;
+
+width:900px;
+
+height:900px;
+
+transform:
+translate(-50%,-50%);
+
+border-radius:50%;
+
+background:
+
+radial-gradient(circle,
+
+rgba(255,220,120,.18),
+
+transparent 70%);
+
+animation:
+
+lightPulse 8s ease infinite;
+
+pointer-events:none;
+
+z-index:-1;
+
+}
+
+@keyframes lightPulse{
+
+0%{
+
+transform:
+
+translate(-50%,-50%)
+
+scale(1);
+
+}
+
+50%{
+
+transform:
+
+translate(-50%,-50%)
+
+scale(1.18);
+
+}
+
+100%{
+
+transform:
+
+translate(-50%,-50%)
+
+scale(1);
+
+}
+
+}
+
+
+/*==========================
+PARTÍCULAS
+==========================*/
+
+#particles{
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+overflow:hidden;
+
+z-index:1;
+
+}
+
+
+/*==========================
+PANTALLAS
+==========================*/
 
 .screen{
 
-    display:none;
+display:none;
 
-    width:100vw;
-    height:100vh;
+width:100vw;
 
-    justify-content:center;
-    align-items:center;
+height:100vh;
 
-    padding:30px;
+padding:40px;
 
-    animation:fade .8s;
+justify-content:center;
+
+align-items:center;
+
+animation:fadeScreen 1s ease;
 
 }
 
 .screen.active{
 
-    display:flex;
+display:flex;
 
 }
 
-/* ---------- Tarjetas ---------- */
+
+/*==========================
+ANIMACIÓN GENERAL
+==========================*/
+
+@keyframes fadeScreen{
+
+from{
+
+opacity:0;
+
+transform:scale(.96);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+
+/*==========================
+TARJETA
+==========================*/
 
 .card{
 
-    width:min(700px,95%);
+position:relative;
 
-    padding:45px;
+width:min(760px,94%);
 
-    border-radius:25px;
+padding:55px;
 
-    background:rgba(255,255,255,.08);
+border-radius:30px;
 
-    backdrop-filter:blur(18px);
+background:
 
-    border:1px solid rgba(255,255,255,.15);
+rgba(255,255,255,.08);
 
-    text-align:center;
+backdrop-filter:
 
-    box-shadow:var(--shadow);
+blur(18px);
 
-}
+border:
 
-/* ---------- Títulos ---------- */
+1px solid rgba(255,255,255,.18);
 
-h1{
+box-shadow:
 
-    font-family:"Great Vibes",cursive;
+0 25px 70px rgba(0,0,0,.55);
 
-    font-size:70px;
+text-align:center;
 
-    color:var(--gold);
-
-    margin-bottom:15px;
+overflow:hidden;
 
 }
 
-h2{
 
-    font-family:"Cinzel",serif;
+/*==========================
+VERSIÓN DELUXE
+==========================*/
 
-    font-size:26px;
+.deluxe{
 
-    margin-bottom:20px;
+border:
 
-    color:var(--paper);
-
-}
-
-.line{
-
-    width:180px;
-
-    height:2px;
-
-    background:var(--gold);
-
-    margin:25px auto;
+2px solid rgba(212,175,55,.20);
 
 }
 
-p{
 
-    font-size:24px;
+/*==========================
+BRILLO DELUXE
+==========================*/
 
-    line-height:1.8;
+.deluxe::before{
 
-    margin-bottom:25px;
+content:"";
 
-}
+position:absolute;
 
-/* ---------- Botones ---------- */
+top:-180%;
 
-button{
+left:-50%;
 
-padding:18px 40px;
+width:60%;
 
-font-size:19px;
-
-border:none;
-
-border-radius:50px;
+height:450%;
 
 background:
 
@@ -152,529 +293,169 @@ linear-gradient(
 
 90deg,
 
-#6E0F2C,
+transparent,
 
-#8F1D42,
+rgba(255,255,255,.28),
 
-#B52D5A);
-
-color:white;
-
-cursor:pointer;
-
-transition:.4s;
-
-font-family:"Montserrat";
-
-letter-spacing:1px;
-
-box-shadow:
-
-0 10px 30px rgba(0,0,0,.35);
-
-}
-
-button:hover{
+transparent);
 
 transform:
 
-translateY(-4px)
+rotate(28deg);
 
-scale(1.02);
+animation:
 
-box-shadow:
-
-0 0 30px rgba(212,175,55,.55);
+glassLight 10s linear infinite;
 
 }
 
-button:hover{
-
-    transform:translateY(-3px);
-
-    background:var(--gold);
-
-    color:#000;
-
-    box-shadow:0 0 25px rgba(212,175,55,.5);
-
-}
-
-/* ---------- Campo contraseña ---------- */
-
-input{
-
-    width:100%;
-
-    padding:16px;
-
-    border:none;
-
-    border-radius:12px;
-
-    margin:20px 0;
-
-    font-size:18px;
-
-    text-align:center;
-
-}
-
-/* ---------- Libro ---------- */
-
-.book{
-
-    width:min(900px,95vw);
-
-    min-height:600px;
-
-    background:var(--paper);
-
-    color:#2d2d2d;
-
-    border-radius:18px;
-
-    padding:60px;
-
-    box-shadow:var(--shadow);
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-.page{
-
-    display:none;
-
-    animation:page .6s;
-
-}
-
-.page.active{
-
-    display:block;
-
-}
-
-.page h2{
-
-    color:var(--wine);
-
-}
-
-.page p{
-
-    color:#333;
-
-    font-size:28px;
-
-}
-
-/* ---------- Foto ---------- */
-
-.photo{
-
-    width:250px;
-
-    height:250px;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
-    border:6px solid var(--gold);
-
-    margin:auto;
-
-    margin-bottom:30px;
-
-    box-shadow:0 0 35px rgba(212,175,55,.5);
-
-}
-
-/* ---------- Corazón ---------- */
-
-.heart{
-
-    font-size:80px;
-
-    color:#ff4d6d;
-
-    margin:25px 0;
-
-    animation:heartbeat 1.6s infinite;
-
-}
-
-/* ---------- Partículas ---------- */
-
-#particles{
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-}
-
-/* ---------- Animaciones ---------- */
-
-@keyframes heartbeat{
+@keyframes glassLight{
 
 0%{
 
-transform:scale(1);
-
-}
-
-50%{
-
-transform:scale(1.15);
+left:-80%;
 
 }
 
 100%{
 
-transform:scale(1);
+left:180%;
 
 }
 
 }
 
-@keyframes fade{
 
-from{
-
-opacity:0;
-
-}
-
-to{
-
-opacity:1;
-
-}
-
-}
-
-@keyframes page{
-
-from{
-
-opacity:0;
-
-transform:translateX(40px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateX(0);
-
-}
-
-}
-
-/* ---------- Responsive ---------- */
-
-@media(max-width:768px){
+/*==========================
+TIPOGRAFÍAS
+==========================*/
 
 h1{
 
-font-size:52px;
+font-family:"Great Vibes";
+
+font-size:72px;
+
+font-weight:400;
+
+color:var(--gold);
+
+margin-bottom:10px;
+
+text-shadow:
+
+0 0 18px rgba(212,175,55,.45);
 
 }
 
 h2{
 
-font-size:22px;
+font-family:"Cinzel";
+
+font-size:26px;
+
+font-weight:600;
+
+margin-bottom:25px;
+
+color:white;
 
 }
 
 p{
 
-font-size:20px;
+font-size:24px;
+
+line-height:1.8;
+
+margin-bottom:30px;
 
 }
 
-.book{
 
-padding:35px;
-
-}
-
-.photo{
-
-width:190px;
-
-height:190px;
-
-}
-
-button{
-
-width:100%;
-
-}
-
-}
-
-/*==============================
-PORTADA DELUXE
-==============================*/
-
-.deluxe{
-
-    position:relative;
-
-    overflow:hidden;
-
-    animation:zoomFade 2s ease;
-
-}
-
-.light{
-
-    position:fixed;
-
-    width:700px;
-
-    height:700px;
-
-    border-radius:50%;
-
-    background:radial-gradient(circle,
-    rgba(255,214,120,.25),
-    transparent 70%);
-
-    left:50%;
-
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    animation:lightMove 8s ease-in-out infinite;
-
-    pointer-events:none;
-
-}
+/*==========================
+LÍNEA DORADA
+==========================*/
 
 .gold-line{
 
-    width:220px;
+width:220px;
 
-    height:3px;
+height:3px;
 
-    margin:25px auto;
+margin:28px auto;
 
-    background:linear-gradient(
-    90deg,
-    transparent,
-    #D4AF37,
-    #FFF0B0,
-    #D4AF37,
-    transparent);
+border-radius:30px;
 
-}
+background:
 
-@keyframes zoomFade{
+linear-gradient(
 
-    from{
+90deg,
 
-        opacity:0;
+transparent,
 
-        transform:scale(.92);
+var(--gold),
 
-    }
+var(--gold-light),
 
-    to{
+var(--gold),
 
-        opacity:1;
-
-        transform:scale(1);
-
-    }
+transparent);
 
 }
 
-@keyframes lightMove{
 
-    0%{
-
-        transform:translate(-50%,-50%) scale(1);
-
-    }
-
-    50%{
-
-        transform:translate(-50%,-50%) scale(1.15);
-
-    }
-
-    100%{
-
-        transform:translate(-50%,-50%) scale(1);
-
-    }
-
-}
-
-/*==============================
-  CORAZÓN DE CRISTAL
-==============================*/
+/*==========================
+CORAZÓN
+==========================*/
 
 .crystal-heart{
 
-    font-size:48px;
+font-size:52px;
 
-    color:#FFD6E8;
+margin-bottom:18px;
 
-    text-shadow:
-        0 0 10px rgba(255,255,255,.7),
-        0 0 25px rgba(255,105,180,.6);
+color:#FFD8E7;
 
-    margin-bottom:15px;
+text-shadow:
 
-    animation:heartGlow 2.5s ease-in-out infinite;
+0 0 15px rgba(255,255,255,.65),
 
-}
+0 0 30px rgba(255,105,180,.45);
 
-@keyframes heartGlow{
+animation:
 
-    0%,100%{
-
-        transform:scale(1);
-
-        opacity:.9;
-
-    }
-
-    50%{
-
-        transform:scale(1.15);
-
-        opacity:1;
-
-    }
+heartFloat 2.5s ease-in-out infinite;
 
 }
 
-/*==============================
-  BORDE DORADO
-==============================*/
+@keyframes heartFloat{
 
-.deluxe{
+0%,100%{
 
-    border:2px solid rgba(212,175,55,.25);
+transform:
 
-    position:relative;
+translateY(0)
 
-}
-
-.deluxe::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:-2px;
-
-    border-radius:25px;
-
-    padding:2px;
-
-    background:linear-gradient(
-        90deg,
-        transparent,
-        #D4AF37,
-        #FFF2A8,
-        #D4AF37,
-        transparent
-    );
-
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-
-    -webkit-mask-composite:xor;
-
-    mask-composite:exclude;
-
-    animation:borderFlow 6s linear infinite;
+scale(1);
 
 }
 
-@keyframes borderFlow{
+50%{
 
-    from{
+transform:
 
-        filter:hue-rotate(0deg);
+translateY(-6px)
 
-    }
-
-    to{
-
-        filter:hue-rotate(20deg);
-
-    }
+scale(1.12);
 
 }
 
-/*==============================
-  BOTÓN
-==============================*/
-
-button{
-
-    position:relative;
-
-    overflow:hidden;
-
 }
-
-button::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:-120%;
-
-    width:60%;
-
-    height:100%;
-
-    background:rgba(255,255,255,.35);
-
-    transform:skewX(-25deg);
-
-}
-
-button:hover::before{
-
-    animation:shine 1s;
-
-}
-
-@keyframes shine{
-
-    to{
-
-        left:140%;
-
-    }
-
-}
-/*==========================
-CORTINAS
-==========================*/
+/*====================================================
+        CORTINAS CINEMATOGRÁFICAS
+====================================================*/
 
 #curtain{
 
@@ -682,9 +463,11 @@ position:fixed;
 
 inset:0;
 
-z-index:9999;
+z-index:99999;
 
 pointer-events:none;
+
+overflow:hidden;
 
 }
 
@@ -702,24 +485,16 @@ height:100%;
 background:
 
 linear-gradient(
-
 90deg,
-
-#2D0713,
-
-#5C1029,
-
-#7B1234,
-
-#5C1029,
-
-#2D0713
-
-);
+#24060F,
+#4C0E20,
+#741430,
+#4C0E20,
+#24060F);
 
 box-shadow:
 
-inset 0 0 80px rgba(0,0,0,.6);
+inset 0 0 90px rgba(0,0,0,.65);
 
 }
 
@@ -727,9 +502,7 @@ inset 0 0 80px rgba(0,0,0,.6);
 
 left:0;
 
-animation:
-
-openLeft 3.8s ease forwards;
+animation:openLeft 3.8s ease forwards;
 
 }
 
@@ -737,9 +510,7 @@ openLeft 3.8s ease forwards;
 
 right:0;
 
-animation:
-
-openRight 3.8s ease forwards;
+animation:openRight 3.8s ease forwards;
 
 }
 
@@ -774,23 +545,25 @@ transform:translateX(105%);
 }
 
 }
-body::before{
 
-content:"";
 
-position:fixed;
+/*====================================================
+            LUZ DE LA PORTADA
+====================================================*/
+
+.light{
+
+position:absolute;
 
 left:50%;
 
 top:50%;
 
-width:900px;
+width:650px;
 
-height:900px;
+height:650px;
 
-transform:
-
-translate(-50%,-50%);
+transform:translate(-50%,-50%);
 
 border-radius:50%;
 
@@ -798,19 +571,21 @@ background:
 
 radial-gradient(circle,
 
-rgba(255,220,120,.18),
+rgba(255,230,170,.18),
 
-transparent 70%);
+transparent 72%);
+
+filter:blur(15px);
 
 animation:
 
-lightPulse 6s ease infinite;
+heroLight 8s ease-in-out infinite;
 
 pointer-events:none;
 
 }
 
-@keyframes lightPulse{
+@keyframes heroLight{
 
 0%{
 
@@ -828,7 +603,7 @@ transform:
 
 translate(-50%,-50%)
 
-scale(1.2);
+scale(1.18);
 
 }
 
@@ -843,51 +618,270 @@ scale(1);
 }
 
 }
-body::before{
 
-content:"";
 
-position:fixed;
+/*====================================================
+          PORTADA DELUXE
+====================================================*/
 
-left:50%;
+#welcome{
 
-top:50%;
+position:relative;
 
-width:900px;
-
-height:900px;
-
-transform:
-
-translate(-50%,-50%);
-
-border-radius:50%;
-
-background:
-
-radial-gradient(circle,
-
-rgba(255,220,120,.18),
-
-transparent 70%);
-
-animation:
-
-lightPulse 6s ease infinite;
-
-pointer-events:none;
+overflow:hidden;
 
 }
 
-@keyframes lightPulse{
+#welcome .card{
 
-0%{
+animation:
+
+welcomeCard 2s ease;
+
+}
+
+@keyframes welcomeCard{
+
+from{
+
+opacity:0;
 
 transform:
 
-translate(-50%,-50%)
+translateY(60px)
+
+scale(.90);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+
+translateY(0)
 
 scale(1);
+
+}
+
+}
+
+
+/*====================================================
+            BOTONES PREMIUM
+====================================================*/
+
+button{
+
+position:relative;
+
+overflow:hidden;
+
+padding:18px 42px;
+
+border:none;
+
+border-radius:60px;
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#6E0F2C,
+
+#8F1D42,
+
+#B72C59);
+
+color:white;
+
+font-size:18px;
+
+font-family:"Montserrat";
+
+letter-spacing:1px;
+
+cursor:pointer;
+
+transition:.35s;
+
+box-shadow:
+
+0 12px 35px rgba(0,0,0,.35);
+
+}
+
+button:hover{
+
+transform:
+
+translateY(-4px)
+
+scale(1.02);
+
+box-shadow:
+
+0 0 30px rgba(212,175,55,.45);
+
+}
+
+button::before{
+
+content:"";
+
+position:absolute;
+
+left:-140%;
+
+top:0;
+
+width:50%;
+
+height:100%;
+
+background:
+
+rgba(255,255,255,.35);
+
+transform:
+
+skewX(-25deg);
+
+}
+
+button:hover::before{
+
+animation:
+
+buttonLight 1.2s;
+
+}
+
+@keyframes buttonLight{
+
+100%{
+
+left:160%;
+
+}
+
+}
+
+
+/*====================================================
+       INPUT CONTRASEÑA
+====================================================*/
+
+input{
+
+width:100%;
+
+padding:18px;
+
+margin:25px 0;
+
+border:none;
+
+outline:none;
+
+border-radius:16px;
+
+font-size:18px;
+
+text-align:center;
+
+font-family:"Montserrat";
+
+background:
+
+rgba(255,255,255,.90);
+
+transition:.35s;
+
+}
+
+input:focus{
+
+box-shadow:
+
+0 0 25px rgba(212,175,55,.55);
+
+}
+
+
+/*====================================================
+      MENSAJE DE ERROR
+====================================================*/
+
+#error{
+
+height:25px;
+
+font-size:17px;
+
+color:#FFD3D3;
+
+margin-top:10px;
+
+}
+
+
+/*====================================================
+      BRILLO DEL TÍTULO
+====================================================*/
+
+h1{
+
+animation:
+
+titleGlow 4s ease-in-out infinite;
+
+}
+
+@keyframes titleGlow{
+
+0%,100%{
+
+text-shadow:
+
+0 0 15px rgba(212,175,55,.35);
+
+}
+
+50%{
+
+text-shadow:
+
+0 0 35px rgba(255,221,120,.85);
+
+}
+
+}
+
+
+/*====================================================
+       EFECTO FLOTANTE
+====================================================*/
+
+.card{
+
+animation:
+
+floating 7s ease-in-out infinite;
+
+}
+
+@keyframes floating{
+
+0%,100%{
+
+transform:
+
+translateY(0);
 
 }
 
@@ -895,20 +889,338 @@ scale(1);
 
 transform:
 
-translate(-50%,-50%)
-
-scale(1.2);
+translateY(-8px);
 
 }
 
-100%{
+}/*====================================================
+            LIBRO DELUXE
+====================================================*/
 
-transform:
+.book{
 
-translate(-50%,-50%)
+    position:relative;
 
-scale(1);
+    width:min(950px,94vw);
+
+    min-height:650px;
+
+    padding:70px;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #E9DFC8 0%,
+        #F8F2E8 8%,
+        #FFFDF9 50%,
+        #F8F2E8 92%,
+        #E9DFC8 100%
+    );
+
+    color:var(--text);
+
+    overflow:hidden;
+
+    box-shadow:
+        0 35px 90px rgba(0,0,0,.55);
+
+    animation:
+        openBook 1.4s ease;
 
 }
+
+
+/*====================================================
+            TAPA DE CUERO
+====================================================*/
+
+.book::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:18px;
+
+    padding:10px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #6E3A15,
+        #8A5427,
+        #6E3A15
+    );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+    mask-composite:exclude;
+
+}
+
+
+/*====================================================
+          SOMBRA CENTRAL DEL LIBRO
+====================================================*/
+
+.book::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:50%;
+
+    width:14px;
+
+    height:100%;
+
+    transform:translateX(-50%);
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        rgba(0,0,0,.25),
+
+        rgba(255,255,255,.18),
+
+        rgba(0,0,0,.25)
+
+    );
+
+}
+
+
+/*====================================================
+              PÁGINAS
+====================================================*/
+
+.page{
+
+    display:none;
+
+    animation:
+
+        pageFade .9s ease;
+
+}
+
+.page.active{
+
+    display:block;
+
+}
+
+
+/*====================================================
+          TÍTULO DEL LIBRO
+====================================================*/
+
+.page h2{
+
+    color:var(--wine);
+
+    font-size:34px;
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+
+/*====================================================
+           TEXTO
+====================================================*/
+
+.page p{
+
+    color:#3D3D3D;
+
+    font-size:29px;
+
+    line-height:2;
+
+    text-align:justify;
+
+}
+
+
+/*====================================================
+          BOTÓN SIGUIENTE
+====================================================*/
+
+.page button{
+
+    margin-top:45px;
+
+}
+
+
+/*====================================================
+       MARCADOR DE TELA
+====================================================*/
+
+.book .bookmark{
+
+    position:absolute;
+
+    top:0;
+
+    right:65px;
+
+    width:18px;
+
+    height:150px;
+
+    background:
+
+    linear-gradient(
+
+        #8B102F,
+
+        #D42A56
+
+    );
+
+    border-radius:
+
+        0 0 10px 10px;
+
+}
+
+
+/*====================================================
+       ESQUINAS DORADAS
+====================================================*/
+
+.book .corner{
+
+    position:absolute;
+
+    width:28px;
+
+    height:28px;
+
+    border:2px solid var(--gold);
+
+}
+
+.book .tl{
+
+    left:20px;
+
+    top:20px;
+
+    border-right:none;
+
+    border-bottom:none;
+
+}
+
+.book .tr{
+
+    right:20px;
+
+    top:20px;
+
+    border-left:none;
+
+    border-bottom:none;
+
+}
+
+.book .bl{
+
+    left:20px;
+
+    bottom:20px;
+
+    border-right:none;
+
+    border-top:none;
+
+}
+
+.book .br{
+
+    right:20px;
+
+    bottom:20px;
+
+    border-left:none;
+
+    border-top:none;
+
+}
+
+
+/*====================================================
+          ANIMACIONES
+====================================================*/
+
+@keyframes openBook{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            rotateY(18deg)
+
+            scale(.92);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            rotateY(0)
+
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes pageFade{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateX(35px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateX(0);
+
+    }
 
 }

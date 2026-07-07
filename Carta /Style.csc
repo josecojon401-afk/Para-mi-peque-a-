@@ -393,3 +393,103 @@ width:100%;
 }
 
 }
+
+/*==============================
+PORTADA DELUXE
+==============================*/
+
+.deluxe{
+
+    position:relative;
+
+    overflow:hidden;
+
+    animation:zoomFade 2s ease;
+
+}
+
+.light{
+
+    position:fixed;
+
+    width:700px;
+
+    height:700px;
+
+    border-radius:50%;
+
+    background:radial-gradient(circle,
+    rgba(255,214,120,.25),
+    transparent 70%);
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    animation:lightMove 8s ease-in-out infinite;
+
+    pointer-events:none;
+
+}
+
+.gold-line{
+
+    width:220px;
+
+    height:3px;
+
+    margin:25px auto;
+
+    background:linear-gradient(
+    90deg,
+    transparent,
+    #D4AF37,
+    #FFF0B0,
+    #D4AF37,
+    transparent);
+
+}
+
+@keyframes zoomFade{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.92);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes lightMove{
+
+    0%{
+
+        transform:translate(-50%,-50%) scale(1);
+
+    }
+
+    50%{
+
+        transform:translate(-50%,-50%) scale(1.15);
+
+    }
+
+    100%{
+
+        transform:translate(-50%,-50%) scale(1);
+
+    }
+
+}

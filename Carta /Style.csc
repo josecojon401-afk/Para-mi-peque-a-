@@ -493,3 +493,152 @@ PORTADA DELUXE
     }
 
 }
+
+/*==============================
+  CORAZÓN DE CRISTAL
+==============================*/
+
+.crystal-heart{
+
+    font-size:48px;
+
+    color:#FFD6E8;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,.7),
+        0 0 25px rgba(255,105,180,.6);
+
+    margin-bottom:15px;
+
+    animation:heartGlow 2.5s ease-in-out infinite;
+
+}
+
+@keyframes heartGlow{
+
+    0%,100%{
+
+        transform:scale(1);
+
+        opacity:.9;
+
+    }
+
+    50%{
+
+        transform:scale(1.15);
+
+        opacity:1;
+
+    }
+
+}
+
+/*==============================
+  BORDE DORADO
+==============================*/
+
+.deluxe{
+
+    border:2px solid rgba(212,175,55,.25);
+
+    position:relative;
+
+}
+
+.deluxe::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-2px;
+
+    border-radius:25px;
+
+    padding:2px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #D4AF37,
+        #FFF2A8,
+        #D4AF37,
+        transparent
+    );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+    mask-composite:exclude;
+
+    animation:borderFlow 6s linear infinite;
+
+}
+
+@keyframes borderFlow{
+
+    from{
+
+        filter:hue-rotate(0deg);
+
+    }
+
+    to{
+
+        filter:hue-rotate(20deg);
+
+    }
+
+}
+
+/*==============================
+  BOTÓN
+==============================*/
+
+button{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+button::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:60%;
+
+    height:100%;
+
+    background:rgba(255,255,255,.35);
+
+    transform:skewX(-25deg);
+
+}
+
+button:hover::before{
+
+    animation:shine 1s;
+
+}
+
+@keyframes shine{
+
+    to{
+
+        left:140%;
+
+    }
+
+}

@@ -289,3 +289,63 @@ setInterval(()=>{
     },4200);
 
 },350);
+
+/*==============================
+  PÉTALOS
+==============================*/
+
+function createPetal(){
+
+    const petal=document.createElement("div");
+
+    petal.innerHTML="🌹";
+
+    petal.style.position="fixed";
+
+    petal.style.left=Math.random()*window.innerWidth+"px";
+
+    petal.style.top="-50px";
+
+    petal.style.fontSize=(18+Math.random()*12)+"px";
+
+    petal.style.opacity=".8";
+
+    petal.style.pointerEvents="none";
+
+    petal.style.transition="transform linear";
+
+    document.body.appendChild(petal);
+
+    let duration=8000+Math.random()*5000;
+
+    petal.animate([
+
+        {
+
+            transform:"translateY(-50px) rotate(0deg)"
+
+        },
+
+        {
+
+            transform:`translate(${(Math.random()-0.5)*200}px,${window.innerHeight+100}px) rotate(${360+Math.random()*360}deg)`
+
+        }
+
+    ],{
+
+        duration:duration,
+
+        easing:"linear"
+
+    });
+
+    setTimeout(()=>{
+
+        petal.remove();
+
+    },duration);
+
+}
+
+setInterval(createPetal,2500);

@@ -1224,3 +1224,326 @@ translateY(-8px);
     }
 
 }
+/*====================================================
+        PANTALLA FINAL
+====================================================*/
+
+#final{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/*====================================================
+        MARCO FOTOGRÁFICO DELUXE
+====================================================*/
+
+.photo{
+
+    width:260px;
+
+    height:260px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:8px solid transparent;
+
+    background:
+    linear-gradient(var(--paper),var(--paper)) padding-box,
+    linear-gradient(
+        135deg,
+        #FFF6C8,
+        #D4AF37,
+        #FFF6C8,
+        #C4931A
+    ) border-box;
+
+    box-shadow:
+        0 0 25px rgba(212,175,55,.45),
+        0 20px 50px rgba(0,0,0,.35);
+
+    animation:
+        photoFloat 6s ease-in-out infinite;
+
+}
+
+
+/*====================================================
+        AUREOLA DE LUZ
+====================================================*/
+
+.photo::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-20px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,220,120,.20),
+    transparent 70%);
+
+}
+
+
+/*====================================================
+        CORAZÓN FINAL
+====================================================*/
+
+.heart{
+
+    margin:30px auto;
+
+    font-size:90px;
+
+    color:#FF4D6D;
+
+    animation:
+        heartbeat 1.4s infinite;
+
+    filter:
+        drop-shadow(0 0 12px rgba(255,77,109,.55));
+
+}
+
+@keyframes heartbeat{
+
+0%{
+
+transform:scale(1);
+
+}
+
+20%{
+
+transform:scale(1.15);
+
+}
+
+40%{
+
+transform:scale(.96);
+
+}
+
+60%{
+
+transform:scale(1.18);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+
+/*====================================================
+        MENSAJE FINAL
+====================================================*/
+
+#final p{
+
+    max-width:650px;
+
+    margin:auto;
+
+    line-height:2;
+
+    font-size:24px;
+
+}
+
+
+/*====================================================
+        BOTÓN FINAL
+====================================================*/
+
+#restart{
+
+    margin-top:40px;
+
+}
+
+
+/*====================================================
+        ANIMACIÓN FOTOGRAFÍA
+====================================================*/
+
+@keyframes photoFloat{
+
+0%,100%{
+
+transform:
+translateY(0)
+scale(1);
+
+}
+
+50%{
+
+transform:
+translateY(-10px)
+scale(1.02);
+
+}
+
+}
+
+
+/*====================================================
+        RESPONSIVE
+====================================================*/
+
+@media(max-width:900px){
+
+.card{
+
+padding:35px;
+
+}
+
+.book{
+
+padding:40px;
+
+min-height:auto;
+
+}
+
+.page p{
+
+font-size:23px;
+
+}
+
+.photo{
+
+width:220px;
+
+height:220px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+h1{
+
+font-size:52px;
+
+}
+
+h2{
+
+font-size:21px;
+
+}
+
+p{
+
+font-size:20px;
+
+}
+
+.page p{
+
+font-size:20px;
+
+line-height:1.8;
+
+}
+
+.card{
+
+padding:28px;
+
+}
+
+.book{
+
+padding:28px;
+
+}
+
+.photo{
+
+width:180px;
+
+height:180px;
+
+}
+
+button{
+
+width:100%;
+
+font-size:17px;
+
+}
+
+input{
+
+font-size:17px;
+
+}
+
+}
+
+
+/*====================================================
+        FONDO CON DESTELLOS
+====================================================*/
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+background-image:
+
+radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+
+background-size:60px 60px;
+
+opacity:.25;
+
+animation:
+
+starsMove 30s linear infinite;
+
+}
+
+@keyframes starsMove{
+
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(-120px);
+
+}
+
+}

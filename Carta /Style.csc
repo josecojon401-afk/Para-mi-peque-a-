@@ -138,23 +138,53 @@ p{
 
 button{
 
-    padding:16px 35px;
+padding:18px 40px;
 
-    border:none;
+font-size:19px;
 
-    border-radius:40px;
+border:none;
 
-    background:var(--wine);
+border-radius:50px;
 
-    color:white;
+background:
 
-    font-size:18px;
+linear-gradient(
 
-    cursor:pointer;
+90deg,
 
-    transition:.35s;
+#6E0F2C,
 
-    font-family:"Montserrat",sans-serif;
+#8F1D42,
+
+#B52D5A);
+
+color:white;
+
+cursor:pointer;
+
+transition:.4s;
+
+font-family:"Montserrat";
+
+letter-spacing:1px;
+
+box-shadow:
+
+0 10px 30px rgba(0,0,0,.35);
+
+}
+
+button:hover{
+
+transform:
+
+translateY(-4px)
+
+scale(1.02);
+
+box-shadow:
+
+0 0 30px rgba(212,175,55,.55);
 
 }
 

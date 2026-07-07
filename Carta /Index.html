@@ -1,1 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para Ti...</title>
+
+    <meta name="theme-color" content="#7B1234">
+
+    <link rel="icon" href="foto.jpg">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Partículas -->
+
+    <div id="particles"></div>
+
+    <!-- Música -->
+
+    <audio id="music" loop>
+
+        <source src="piano.mp3" type="audio/mpeg">
+
+    </audio>
+
+    <!-- Pantalla 1 -->
+
+    <section id="welcome" class="screen active">
+
+        <div class="card">
+
+            <h1>Para Ti...</h1>
+
+            <div class="line"></div>
+
+            <h2>
+
+                Hay palabras que nacen del corazón...
+
+            </h2>
+
+            <p>
+
+                Esta carta fue creada especialmente para ti.
+
+            </p>
+
+            <button id="startBtn">
+
+                Comenzar
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- Pantalla 2 -->
+
+    <section id="login" class="screen">
+
+        <div class="card">
+
+            <h1>Una pequeña llave</h1>
+
+            <p>
+
+                Solo quien conoce la palabra correcta podrá abrir esta carta.
+
+            </p>
+
+            <input
+
+                id="password"
+
+                type="password"
+
+                placeholder="Contraseña">
+
+            <button id="openBtn">
+
+                Abrir Carta
+
+            </button>
+
+            <p id="error"></p>
+
+        </div>
+
+    </section>
+
+    <!-- Pantalla 3 -->
+
+    <section id="book" class="screen">
+
+        <div class="book">
+
+            <div class="page active">
+
+                <h2>Para una amiga muy especial</h2>
+
+                <p>
+
+                    Esta carta es para que la leas cada vez que necesites motivación e inspiración para iniciar tu día.
+
+                </p>
+
+                <button class="next">
+
+                    Continuar
+
+                </button>
+
+            </div>
+
+            <div class="page">
+
+                <p>
+
+                    No importa cuántas veces te sientas triste o que no tengas ánimos, siempre habrá un motivo para levantarte.
+
+                </p>
+
+                <button class="next">
+
+                    Continuar
+
+                </button>
+
+            </div>
+
+            <div class="page">
+
+                <p>
+
+                    Quiero que recuerdes que nunca estarás sola.
+
+                    Siempre habrá alguien dispuesto a escucharte, abrazarte y recordarte lo valiosa que eres.
+
+                </p>
+
+                <button class="next">
+
+                    Continuar
+
+                </button>
+
+            </div>
+
+            <div class="page">
+
+                <p>
+
+                    Si algún día vuelves a sentir que el mundo pesa demasiado, regresa aquí.
+
+                    Estas palabras siempre te estarán esperando.
+
+                </p>
+
+                <button class="next">
+
+                    Ver Final
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Pantalla Final -->
+
+    <section id="final" class="screen">
+
+        <div class="card">
+
+            <img
+
+                src="foto.jpg"
+
+                class="photo"
+
+                alt="Fotografía">
+
+            <h2>
+
+                Con todo mi cariño y aprecio...
+
+            </h2>
+
+            <h1>
+
+                Oscar
+
+            </h1>
+
+            <div class="heart">
+
+                ❤
+
+            </div>
+
+            <p>
+
+                Gracias por permitirme formar parte de tu historia.
+
+            </p>
+
+            <button id="restart">
+
+                Leer nuevamente
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

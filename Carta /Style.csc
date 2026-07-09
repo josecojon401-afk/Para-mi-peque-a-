@@ -1547,3 +1547,17 @@ transform:translateY(-120px);
 }
 
 }
+
+/*====================================================
+        INDICADOR DE PÁGINAS
+====================================================*/
+
+#pageIndicator{
+
+letter-spacing:2px;
+
+font-weight:600;
+
+user-select:none;
+
+}

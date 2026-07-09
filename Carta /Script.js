@@ -1,39 +1,54 @@
-/* ==========================================
-   PARA TI - EDICIÓN DELUXE
-   script.js
-========================================== */
+/*====================================================
+        PARA TI - EDICIÓN DELUXE
+        SCRIPT VERSION 2.1
+====================================================*/
+
+
+/*====================================================
+                CONFIGURACIÓN
+====================================================*/
 
 const PASSWORD = "Ayuda";
 
-// Pantallas
+
+/*====================================================
+                ELEMENTOS
+====================================================*/
+
 const screens = {
+
     welcome: document.getElementById("welcome"),
+
     login: document.getElementById("login"),
+
     book: document.getElementById("book"),
+
     final: document.getElementById("final")
+
 };
 
-// Botones
 const startBtn = document.getElementById("startBtn");
+
 const openBtn = document.getElementById("openBtn");
+
 const restartBtn = document.getElementById("restart");
 
-// Contraseña
 const passwordInput = document.getElementById("password");
+
 const error = document.getElementById("error");
 
-// Música
 const music = document.getElementById("music");
 
-// Libro
+const curtain = document.getElementById("curtain");
+
 const pages = document.querySelectorAll(".page");
-const nextButtons = document.querySelectorAll(".next");
 
 let currentPage = 0;
 
-/*-----------------------------------
-   Mostrar pantalla
------------------------------------*/
+
+/*====================================================
+            MOSTRAR PANTALLA
+====================================================*/
 
 function showScreen(screen){
 
@@ -47,9 +62,33 @@ function showScreen(screen){
 
 }
 
-/*-----------------------------------
-   Comenzar
------------------------------------*/
+
+/*====================================================
+        EFECTO CORTINAS
+====================================================*/
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        curtain.style.transition="opacity 1.4s ease";
+
+        curtain.style.opacity="0";
+
+        setTimeout(()=>{
+
+            curtain.remove();
+
+        },1500);
+
+    },3800);
+
+});
+
+
+/*====================================================
+        BOTÓN COMENZAR
+====================================================*/
 
 startBtn.addEventListener("click",()=>{
 
@@ -57,13 +96,14 @@ startBtn.addEventListener("click",()=>{
 
 });
 
-/*-----------------------------------
-   Abrir carta
------------------------------------*/
 
-openBtn.addEventListener("click",()=>{
+/*====================================================
+        VALIDAR CONTRASEÑA
+====================================================*/
 
-    const value = passwordInput.value.trim();
+function validatePassword(){
+
+    const value=passwordInput.value.trim();
 
     if(value===PASSWORD){
 
@@ -71,17 +111,21 @@ openBtn.addEventListener("click",()=>{
 
         showScreen(screens.book);
 
-        music.play().catch(()=>{
+        if(music){
 
-            console.log("La música comenzará cuando el usuario interactúe.");
+            music.volume=0;
 
-        });
+            music.play().catch(()=>{});
+
+            fadeInMusic();
+
+        }
 
     }
 
     else{
 
-        error.textContent="Contraseña incorrecta.";
+        error.textContent="Contraseña incorrecta";
 
         passwordInput.value="";
 
@@ -89,25 +133,53 @@ openBtn.addEventListener("click",()=>{
 
     }
 
-});
+}
 
-/*-----------------------------------
-   Enter en contraseña
------------------------------------*/
 
-passwordInput.addEventListener("keypress",(e)=>{
+openBtn.addEventListener("click",validatePassword);
+
+
+passwordInput.addEventListener("keydown",(e)=>{
 
     if(e.key==="Enter"){
 
-        openBtn.click();
+        validatePassword();
 
     }
 
 });
 
-/*-----------------------------------
-   Mostrar página
------------------------------------*/
+
+/*====================================================
+        FADE IN MÚSICA
+====================================================*/
+
+function fadeInMusic(){
+
+    let volume=0;
+
+    const interval=setInterval(()=>{
+
+        volume+=0.05;
+
+        if(volume>=0.6){
+
+            volume=0.6;
+
+            clearInterval(interval);
+
+        }
+
+        music.volume=volume;
+
+    },150);
+
+}
+
+
+/*====================================================
+        MOSTRAR PRIMERA PÁGINA
+====================================================*/
 
 function showPage(index){
 
@@ -117,23 +189,99 @@ function showPage(index){
 
     });
 
-    pages[index].classList.add("active");
+    if(pages[index]){
+
+        pages[index].classList.add("active");
+
+    }
 
 }
 
-/*-----------------------------------
-   Botones siguiente
------------------------------------*/
+showPage(0);
+/*====================================================
+            LIBRO INTERACTIVO
+====================================================*/
+
+// Botones "Siguiente"
+const nextButtons = document.querySelectorAll(".next");
+
+// Crear indicador de páginas
+const pageIndicator = document.createElement("div");
+
+pageIndicator.id = "pageIndicator";
+
+pageIndicator.style.position = "absolute";
+pageIndicator.style.bottom = "25px";
+pageIndicator.style.left = "50%";
+pageIndicator.style.transform = "translateX(-50%)";
+pageIndicator.style.fontFamily = "Montserrat";
+pageIndicator.style.fontSize = "15px";
+pageIndicator.style.color = "#7B1234";
+pageIndicator.style.opacity = ".75";
+
+const book = document.querySelector(".book");
+
+if(book){
+
+    book.appendChild(pageIndicator);
+
+}
+
+// Actualizar indicador
+function updateIndicator(){
+
+    pageIndicator.textContent =
+    `Página ${currentPage + 1} de ${pages.length}`;
+
+}
+
+// Mostrar página
+function goToPage(index){
+
+    if(index < 0 || index >= pages.length){
+
+        return;
+
+    }
+
+    pages.forEach(page=>{
+
+        page.classList.remove("active");
+
+        page.style.animation = "none";
+
+    });
+
+    currentPage = index;
+
+    requestAnimationFrame(()=>{
+
+        pages[currentPage].classList.add("active");
+
+        pages[currentPage].style.animation =
+        "pageFade .7s ease";
+
+    });
+
+    updateIndicator();
+
+}
+
+// Primera actualización
+updateIndicator();
+
+
+//====================================================
+// SIGUIENTE
+//====================================================
 
 nextButtons.forEach(button=>{
 
     button.addEventListener("click",()=>{
 
-        currentPage++;
+        if(currentPage < pages.length - 1){
 
-        if(currentPage<pages.length){
-
-            showPage(currentPage);
+            goToPage(currentPage + 1);
 
         }
 
@@ -147,228 +295,56 @@ nextButtons.forEach(button=>{
 
 });
 
-/*-----------------------------------
-   Reiniciar lectura
------------------------------------*/
+
+//====================================================
+// NAVEGACIÓN CON TECLADO
+//====================================================
+
+document.addEventListener("keydown",(e)=>{
+
+    if(!screens.book.classList.contains("active")){
+
+        return;
+
+    }
+
+    if(e.key==="ArrowRight"){
+
+        if(currentPage < pages.length-1){
+
+            goToPage(currentPage+1);
+
+        }
+
+    }
+
+    if(e.key==="ArrowLeft"){
+
+        if(currentPage>0){
+
+            goToPage(currentPage-1);
+
+        }
+
+    }
+
+});
+
+
+//====================================================
+// REINICIAR EXPERIENCIA
+//====================================================
 
 restartBtn.addEventListener("click",()=>{
 
     currentPage=0;
 
-    showPage(0);
+    goToPage(0);
+
+    passwordInput.value="";
+
+    error.textContent="";
 
     showScreen(screens.welcome);
-
-});
-
-/*-----------------------------------
-   Partículas doradas
------------------------------------*/
-
-const particles=document.getElementById("particles");
-
-function createParticle(){
-
-    const particle=document.createElement("span");
-
-    particle.style.position="absolute";
-
-    particle.style.width="4px";
-
-    particle.style.height="4px";
-
-    particle.style.borderRadius="50%";
-
-    particle.style.background="#D4AF37";
-
-    particle.style.left=Math.random()*100+"vw";
-
-    particle.style.bottom="-10px";
-
-    particle.style.opacity=Math.random();
-
-    particle.style.boxShadow="0 0 10px #D4AF37";
-
-    particle.style.animation="floatParticle linear";
-
-    particle.style.animationDuration=(5+Math.random()*5)+"s";
-
-    particles.appendChild(particle);
-
-    setTimeout(()=>{
-
-        particle.remove();
-
-    },10000);
-
-}
-
-setInterval(createParticle,250);
-
-/*-----------------------------------
-   Animación de partículas
------------------------------------*/
-
-const style=document.createElement("style");
-
-style.innerHTML=`
-
-@keyframes floatParticle{
-
-0%{
-
-transform:translateY(0);
-
-opacity:0;
-
-}
-
-20%{
-
-opacity:1;
-
-}
-
-100%{
-
-transform:translateY(-110vh);
-
-opacity:0;
-
-}
-
-}
-
-`;
-
-document.head.appendChild(style);
-/*=============================
-   Destellos dorados
-=============================*/
-
-setInterval(()=>{
-
-    const star=document.createElement("div");
-
-    star.style.position="fixed";
-
-    star.style.width="3px";
-
-    star.style.height="3px";
-
-    star.style.borderRadius="50%";
-
-    star.style.background="#FFD86B";
-
-    star.style.left=Math.random()*window.innerWidth+"px";
-
-    star.style.top=Math.random()*window.innerHeight+"px";
-
-    star.style.boxShadow="0 0 15px #FFD86B";
-
-    star.style.opacity=".9";
-
-    star.style.pointerEvents="none";
-
-    star.style.transition="all 4s linear";
-
-    document.body.appendChild(star);
-
-    setTimeout(()=>{
-
-        star.style.transform="translateY(-80px)";
-
-        star.style.opacity="0";
-
-    },100);
-
-    setTimeout(()=>{
-
-        star.remove();
-
-    },4200);
-
-},350);
-
-/*==============================
-  PÉTALOS
-==============================*/
-
-function createPetal(){
-
-    const petal=document.createElement("div");
-
-    petal.innerHTML="🌹";
-
-    petal.style.position="fixed";
-
-    petal.style.left=Math.random()*window.innerWidth+"px";
-
-    petal.style.top="-50px";
-
-    petal.style.fontSize=(18+Math.random()*12)+"px";
-
-    petal.style.opacity=".8";
-
-    petal.style.pointerEvents="none";
-
-    petal.style.transition="transform linear";
-
-    document.body.appendChild(petal);
-
-    let duration=8000+Math.random()*5000;
-
-    petal.animate([
-
-        {
-
-            transform:"translateY(-50px) rotate(0deg)"
-
-        },
-
-        {
-
-            transform:`translate(${(Math.random()-0.5)*200}px,${window.innerHeight+100}px) rotate(${360+Math.random()*360}deg)`
-
-        }
-
-    ],{
-
-        duration:duration,
-
-        easing:"linear"
-
-    });
-
-    setTimeout(()=>{
-
-        petal.remove();
-
-    },duration);
-
-}
-
-setInterval(createPetal,2500);
-/*=========================
-Apertura Cinematográfica
-=========================*/
-
-window.addEventListener("load",()=>{
-
-const curtain=document.getElementById("curtain");
-
-setTimeout(()=>{
-
-curtain.style.transition="opacity 1.5s";
-
-curtain.style.opacity="0";
-
-setTimeout(()=>{
-
-curtain.remove();
-
-},1500);
-
-},3800);
 
 });

@@ -5,161 +5,220 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<title>Para Ti...</title>
+<title>Para Ti ❤️</title>
 
-<meta name="theme-color" content="#6E0F2C">
+<meta
+name="description"
+content="Una experiencia interactiva creada con mucho cariño para una persona muy especial.">
 
-<link rel="stylesheet" href="style.css">
+<meta
+name="theme-color"
+content="#7B1234">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta
+property="og:title"
+content="Para Ti ❤️">
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta
+property="og:description"
+content="Una carta interactiva creada especialmente para ti.">
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<meta
+property="og:type"
+content="website">
+
+<meta
+property="og:image"
+content="foto.png">
+
+<meta
+property="og:locale"
+content="es_ES">
+
+<link
+rel="icon"
+type="image/png"
+href="favicon.png">
+
+<link
+rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link
+rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="style.css">
 
 </head>
 
 <body>
 
-<!--=========================
-CORTINAS
-==========================-->
-
-<div id="curtain">
-
-<div class="left-curtain"></div>
-
-<div class="right-curtain"></div>
-
-</div>
-
-<!--=========================
-PARTÍCULAS
-==========================-->
+<!--==========================================
+        PARTÍCULAS
+===========================================-->
 
 <div id="particles"></div>
 
-<!--=========================
-MÚSICA
-==========================-->
+<!--==========================================
+        CORTINAS
+===========================================-->
 
-<audio id="music" loop>
+<div id="curtainLeft" class="curtain"></div>
 
-<source src="piano.mp3" type="audio/mpeg">
+<div id="curtainRight" class="curtain"></div>
 
-</audio>
+<!--==========================================
+        CONTENEDOR PRINCIPAL
+===========================================-->
 
-<!--=========================
-PORTADA
-==========================-->
+<main id="app">
 
-<section id="welcome" class="screen active">
+<!--==========================================
+        PANTALLA BIENVENIDA
+===========================================-->
 
-<div class="light"></div>
+<section
+id="welcome"
+class="screen active">
 
-<div class="card deluxe">
-
-<div class="crystal-heart">
-
-❤
-
-</div>
+<div class="hero">
 
 <h1>
 
-Para Ti...
+Para Ti
 
 </h1>
 
-<div class="gold-line"></div>
+<p class="subtitle">
+
+Hay regalos que no se pueden envolver...
+
+solo se pueden sentir.
+
+</p>
+
+<button
+id="startBtn"
+class="primary-button"
+aria-label="Comenzar la experiencia">
+
+Comenzar
+
+</button>
+
+</div>
+
+  </section>
+  <!--==========================================
+        PANTALLA CONTRASEÑA
+===========================================-->
+
+<section
+id="login"
+class="screen">
+
+<div class="login-card">
 
 <h2>
 
-Hay palabras que nacen del corazón...
+Una pequeña llave 💛
 
 </h2>
 
 <p>
 
-Esta carta fue escrita para que la leas cada vez que necesites motivación e inspiración para iniciar tu día.
+Para continuar escribe la palabra correcta.
 
 </p>
 
-<button id="startBtn">
-
-✨ Comenzar la experiencia
-
-</button>
-
-</div>
-
-</section>
-
-<!--=========================
-CONTRASEÑA
-==========================-->
-
-<section id="login" class="screen">
-
-<div class="card">
-
-<h1>
-
-Bienvenida
-
-</h1>
-
-<div class="gold-line"></div>
-
-<p>
-
-Solo quien conoce la palabra correcta podrá descubrir el contenido de esta carta.
-
-</p>
+<div class="input-group">
 
 <input
-
-id="password"
-
 type="password"
+id="password"
+placeholder="Contraseña"
+autocomplete="off"
+maxlength="20">
 
-placeholder="Ingresa la contraseña"
-
-autocomplete="off">
-
-<button id="openBtn">
+<button
+id="unlockBtn"
+class="primary-button"
+aria-label="Desbloquear carta">
 
 Abrir Carta
 
 </button>
 
-<p id="error"></p>
+</div>
+
+<p
+id="error"
+class="error-message">
+
+</p>
 
 </div>
 
 </section>
 
-<!--=========================
-LIBRO
-==========================-->
+<!--==========================================
+        LIBRO
+===========================================-->
 
-<section id="book" class="screen">
+<section
+id="book"
+class="screen">
 
-<div class="book">
-  
-<div class="bookmark"></div>
+<div class="book-container">
 
-<div class="corner tl"></div>
-<div class="corner tr"></div>
-<div class="corner bl"></div>
-<div class="corner br"></div>
-<div class="page active">
+<div class="book-cover">
 
 <h2>
 
-Para una amiga muy especial
+Para Ti
+
+</h2>
+
+<p>
+
+Con todo mi cariño
+
+</p>
+
+</div>
+
+<div class="book">
+
+<div
+id="pageIndicator"
+class="page-indicator">
+
+Página 1 de 6
+
+</div>
+
+<!--==========================================
+        PÁGINA 1
+===========================================-->
+
+<section
+class="page active">
+
+<h2>
+
+Antes de comenzar...
 
 </h2>
 
@@ -167,61 +226,178 @@ Para una amiga muy especial
 
 Esta carta es para que la leas cada vez que necesites motivación e inspiración para iniciar tu día.
 
+No importa cuántas veces te sientas triste o que no tengas ánimos, siempre habrá un motivo para poder levantarte.
+
 </p>
 
-<button class="next">
+<p>
 
-Siguiente →
+Cada palabra fue escrita pensando en recordarte lo valiosa que eres y en que nunca olvides la fortaleza que llevas dentro.
+
+</p>
+
+</section>
+
+<!--==========================================
+        PÁGINA 2
+===========================================-->
+
+<section
+class="page">
+
+<h2>
+
+Nunca olvides...
+
+</h2>
+
+<p>
+
+Habrá días en los que el camino parezca difícil, pero incluso en esos momentos tienes la capacidad de seguir adelante.
+
+</p>
+
+<p>
+
+Confía en ti.
+
+Confía en lo que has logrado.
+
+Confía en todo lo bueno que aún está por venir.
+
+</p>
+
+  </section>
+  <!--==========================================
+        PÁGINA 3
+===========================================-->
+
+<section class="page">
+
+<h2>
+Siempre habrá esperanza
+</h2>
+
+<p>
+
+Aunque existan días grises, recuerda que ninguna tormenta es eterna.
+
+Cada amanecer trae una nueva oportunidad para volver a sonreír, volver a creer y volver a comenzar.
+
+</p>
+
+<p>
+
+Nunca dudes de tu capacidad para superar los desafíos que la vida ponga frente a ti.
+
+</p>
+
+</section>
+
+<!--==========================================
+        PÁGINA 4
+===========================================-->
+
+<section class="page">
+
+<h2>
+Una persona especial
+</h2>
+
+<p>
+
+Quiero que nunca olvides que eres una persona valiosa.
+
+Tu forma de ser, tu bondad y tu corazón hacen una diferencia en la vida de quienes tienen la fortuna de conocerte.
+
+</p>
+
+<p>
+
+No permitas que un mal momento defina quién eres.
+
+</p>
+
+</section>
+
+<!--==========================================
+        PÁGINA 5
+===========================================-->
+
+<section class="page">
+
+<h2>
+Con todo mi cariño
+</h2>
+
+<p>
+
+Con todo mi cariño y aprecio, deseo que cada uno de tus sueños encuentre el camino para hacerse realidad.
+
+Que nunca pierdas la ilusión de seguir creciendo y descubriendo todo lo maravilloso que hay dentro de ti.
+
+</p>
+
+<p>
+
+Siempre habrá alguien creyendo en ti.
+
+</p>
+
+</section>
+
+<!--==========================================
+        PÁGINA 6
+===========================================-->
+
+<section class="page">
+
+<h2>
+Un pequeño recuerdo
+</h2>
+
+<div class="photo-frame">
+
+<img
+src="foto.png"
+alt="Fotografía especial"
+id="photo">
+
+</div>
+
+<p class="photo-text">
+
+Porque algunos momentos merecen conservarse para siempre.
+
+</p>
+
+</section>
+
+<!--==========================================
+        CONTROLES DEL LIBRO
+===========================================-->
+
+<div class="book-controls">
+
+<button
+id="prevBtn"
+class="secondary-button"
+aria-label="Página anterior">
+
+◀ Anterior
+
+</button>
+
+<button
+id="nextBtn"
+class="primary-button"
+aria-label="Página siguiente">
+
+Siguiente ▶
 
 </button>
 
 </div>
-
-<div class="page">
-
-<p>
-
-No importa cuántas veces te sientas triste o que no tengas ánimos; siempre habrá un motivo para levantarte.
-
-</p>
-
-<button class="next">
-
-Siguiente →
-
-</button>
-
-</div>
-
-<div class="page">
-
-<p>
-
-Nunca olvides que eres una persona valiosa. Incluso en los días más difíciles, recuerda que cuentas con alguien dispuesto a escucharte, abrazarte y ayudarte a transformar tus lágrimas en una sonrisa.
-
-</p>
-
-<button class="next">
-
-Siguiente →
-
-</button>
-
-</div>
-
-<div class="page">
-
-<p>
-
-Con todo mi cariño y aprecio, deseo que cada vez que regreses a esta carta encuentres paz, esperanza y la fuerza para continuar.
-
-</p>
-
-<button class="next">
-
-Ver Final
-
-</button>
 
 </div>
 
@@ -229,33 +405,31 @@ Ver Final
 
 </section>
 
-<!--=========================
-FINAL
-==========================-->
+<!--==========================================
+        PANTALLA FINAL
+===========================================-->
 
-<section id="final" class="screen">
+<section
+id="final"
+class="screen">
 
-<div class="card deluxe">
-
-<img
-
-src="foto.jpg"
-
-alt="Fotografía"
-
-class="photo">
-
-<h2>
-
-Con todo mi cariño y aprecio...
-
-</h2>
+<div class="final-card">
 
 <h1>
 
-Oscar
+Gracias
 
 </h1>
+
+<p id="finalMessage">
+
+Espero que esta pequeña experiencia haya logrado dibujar una sonrisa en tu rostro.
+
+Nunca olvides lo especial que eres y todo lo bueno que aún está por venir.
+
+</p>
+
+<div class="heart-container">
 
 <div class="heart">
 
@@ -263,25 +437,68 @@ Oscar
 
 </div>
 
-<p>
+</div>
 
-Si algún día vuelves a sentir que el mundo pesa demasiado...
+<button
+id="restart"
+class="primary-button"
+aria-label="Volver a comenzar">
 
-regresa aquí.
-
-Estas palabras siempre estarán esperándote.
-
-</p>
-
-<button id="restart">
-
-💝 Leer nuevamente
+Volver a leer
 
 </button>
 
 </div>
 
-</section>
+  </section>
+  <!--==========================================
+        AUDIO
+===========================================-->
+
+<audio
+    id="music"
+    preload="auto"
+    loop>
+
+    <source
+        src="piano.mp3"
+        type="audio/mpeg">
+
+    Tu navegador no soporta audio HTML5.
+
+</audio>
+
+</main>
+
+<!--==========================================
+        NOSCRIPT
+===========================================-->
+
+<noscript>
+
+<div class="noscript-message">
+
+<h2>
+
+JavaScript requerido
+
+</h2>
+
+<p>
+
+Esta experiencia fue creada para funcionar con JavaScript habilitado.
+
+Por favor actívalo en tu navegador para disfrutar completamente de esta carta.
+
+</p>
+
+</div>
+
+</noscript>
+
+<!--==========================================
+        SCRIPT
+===========================================-->
 
 <script src="script.js"></script>
 

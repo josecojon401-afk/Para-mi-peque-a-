@@ -348,3 +348,273 @@ restartBtn.addEventListener("click",()=>{
     showScreen(screens.welcome);
 
 });
+
+/*====================================================
+        PARTÍCULAS DELUXE
+====================================================*/
+
+const particleContainer = document.getElementById("particles");
+
+function createGoldenParticle(){
+
+    if(!particleContainer) return;
+
+    const p = document.createElement("div");
+
+    const size = Math.random()*5 + 2;
+
+    p.style.position = "absolute";
+    p.style.width = size + "px";
+    p.style.height = size + "px";
+    p.style.borderRadius = "50%";
+
+    p.style.background =
+        "radial-gradient(circle,#FFF7CC,#D4AF37)";
+
+    p.style.left = Math.random()*100 + "vw";
+    p.style.top = "105vh";
+
+    p.style.opacity = Math.random();
+
+    p.style.boxShadow =
+        "0 0 12px rgba(212,175,55,.8)";
+
+    particleContainer.appendChild(p);
+
+    const duration = 6000 + Math.random()*5000;
+
+    p.animate([
+
+        {
+            transform:"translateY(0) scale(1)",
+            opacity:.9
+        },
+
+        {
+            transform:
+            `translate(${(Math.random()-.5)*150}px,-120vh)
+             scale(.2)`,
+
+            opacity:0
+        }
+
+    ],{
+
+        duration:duration,
+
+        easing:"linear"
+
+    });
+
+    setTimeout(()=>{
+
+        p.remove();
+
+    },duration);
+
+}
+
+setInterval(createGoldenParticle,220);
+
+
+/*====================================================
+        PÉTALOS
+====================================================*/
+
+function createPetal(){
+
+    const petal = document.createElement("div");
+
+    petal.innerHTML="❀";
+
+    petal.style.position="fixed";
+
+    petal.style.left=
+    Math.random()*window.innerWidth+"px";
+
+    petal.style.top="-40px";
+
+    petal.style.fontSize=
+    (18+Math.random()*12)+"px";
+
+    petal.style.color="#C72D5A";
+
+    petal.style.opacity=".8";
+
+    petal.style.pointerEvents="none";
+
+    document.body.appendChild(petal);
+
+    const duration=
+    9000+Math.random()*4000;
+
+    petal.animate([
+
+        {
+
+            transform:
+            "translateY(-40px) rotate(0deg)"
+
+        },
+
+        {
+
+            transform:
+            `translate(${(Math.random()-.5)*220}px,
+            ${window.innerHeight+120}px)
+
+            rotate(${360+Math.random()*360}deg)`
+
+        }
+
+    ],{
+
+        duration:duration,
+
+        easing:"linear"
+
+    });
+
+    setTimeout(()=>{
+
+        petal.remove();
+
+    },duration);
+
+}
+
+setInterval(createPetal,2600);
+
+
+/*====================================================
+      DESTELLOS DE LA FOTOGRAFÍA
+====================================================*/
+
+function sparklePhoto(){
+
+    const photo=document.querySelector(".photo");
+
+    if(!photo) return;
+
+    photo.animate([
+
+        {
+
+            boxShadow:
+            "0 0 20px rgba(212,175,55,.3)"
+
+        },
+
+        {
+
+            boxShadow:
+            "0 0 45px rgba(255,230,140,.9)"
+
+        },
+
+        {
+
+            boxShadow:
+            "0 0 20px rgba(212,175,55,.3)"
+
+        }
+
+    ],{
+
+        duration:3500,
+
+        iterations:1
+
+    });
+
+}
+
+setInterval(sparklePhoto,5000);
+
+
+/*====================================================
+      CORAZÓN FINAL
+====================================================*/
+
+function pulseHeart(){
+
+    const heart=document.querySelector(".heart");
+
+    if(!heart) return;
+
+    heart.animate([
+
+        {
+
+            transform:"scale(1)"
+
+        },
+
+        {
+
+            transform:"scale(1.18)"
+
+        },
+
+        {
+
+            transform:"scale(1)"
+
+        }
+
+    ],{
+
+        duration:1400,
+
+        iterations:1
+
+    });
+
+}
+
+setInterval(pulseHeart,2000);
+
+
+/*====================================================
+      TRANSICIÓN AL FINAL
+====================================================*/
+
+const originalShowScreen = showScreen;
+
+showScreen = function(screen){
+
+    document.body.animate([
+
+        {
+
+            opacity:.97,
+
+            filter:"blur(0px)"
+
+        },
+
+        {
+
+            opacity:1,
+
+            filter:"blur(1px)"
+
+        },
+
+        {
+
+            opacity:1,
+
+            filter:"blur(0px)"
+
+        }
+
+    ],{
+
+        duration:650
+
+    });
+
+    originalShowScreen(screen);
+
+};

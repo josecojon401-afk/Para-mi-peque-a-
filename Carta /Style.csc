@@ -1561,3 +1561,35 @@ font-weight:600;
 user-select:none;
 
 }
+
+/*====================================================
+        DESTELLOS Y EFECTOS FINALES
+====================================================*/
+
+.photo{
+
+transition:
+transform .8s,
+box-shadow .8s;
+
+}
+
+.photo:hover{
+
+transform:
+scale(1.04);
+
+}
+
+.heart{
+
+transition:
+transform .5s;
+
+}
+
+#particles{
+
+overflow:hidden;
+
+}

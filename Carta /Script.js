@@ -618,3 +618,189 @@ showScreen = function(screen){
     originalShowScreen(screen);
 
 };
+
+/*====================================================
+            VERSIÓN 2.1 - MÓDULO FINAL
+====================================================*/
+
+
+/*====================================================
+      CONTROL DE INTENTOS
+====================================================*/
+
+let failedAttempts = 0;
+let lockUntil = 0;
+
+const originalValidatePassword = validatePassword;
+
+validatePassword = function () {
+
+    if (Date.now() < lockUntil) {
+
+        const seconds = Math.ceil((lockUntil - Date.now()) / 1000);
+
+        error.textContent =
+            `Espera ${seconds} segundos para volver a intentar.`;
+
+        return;
+    }
+
+    const value = passwordInput.value.trim();
+
+    if (value === PASSWORD) {
+
+        failedAttempts = 0;
+
+        originalValidatePassword();
+
+        return;
+
+    }
+
+    failedAttempts++;
+
+    if (failedAttempts >= 5) {
+
+        lockUntil = Date.now() + 30000;
+
+        error.textContent =
+            "Demasiados intentos. Espera 30 segundos.";
+
+        return;
+
+    }
+
+    originalValidatePassword();
+
+};
+
+
+/*====================================================
+            EFECTO ESCRITURA
+====================================================*/
+
+function typeWriter(element, speed = 35) {
+
+    if (!element) return;
+
+    const text = element.dataset.text || element.textContent;
+
+    element.dataset.text = text;
+
+    element.textContent = "";
+
+    let i = 0;
+
+    const interval = setInterval(() => {
+
+        element.textContent += text.charAt(i);
+
+        i++;
+
+        if (i >= text.length) {
+
+            clearInterval(interval);
+
+        }
+
+    }, speed);
+
+}
+
+
+/*====================================================
+            OBSERVADOR PANTALLA FINAL
+====================================================*/
+
+const finalObserver = new MutationObserver(() => {
+
+    if (screens.final.classList.contains("active")) {
+
+        const message =
+            screens.final.querySelector("p");
+
+        typeWriter(message);
+
+    }
+
+});
+
+finalObserver.observe(screens.final, {
+
+    attributes: true,
+
+    attributeFilter: ["class"]
+
+});
+
+
+/*====================================================
+            CELEBRACIÓN FINAL
+====================================================*/
+
+function celebration() {
+
+    for (let i = 0; i < 60; i++) {
+
+        setTimeout(() => {
+
+            createGoldenParticle();
+
+        }, i * 70);
+
+    }
+
+}
+
+
+/*====================================================
+            CUANDO LLEGA AL FINAL
+====================================================*/
+
+const previousShowScreen = showScreen;
+
+showScreen = function (screen) {
+
+    previousShowScreen(screen);
+
+    if (screen === screens.final) {
+
+        celebration();
+
+    }
+
+};
+
+
+/*====================================================
+            REINICIO COMPLETO
+====================================================*/
+
+restartBtn.addEventListener("click", () => {
+
+    failedAttempts = 0;
+
+    lockUntil = 0;
+
+    if (music) {
+
+        music.pause();
+
+        music.currentTime = 0;
+
+    }
+
+});
+
+
+/*====================================================
+            DESPEDIDA
+====================================================*/
+
+console.log(
+
+"%cProyecto 'Para Ti - Edición Deluxe' cargado correctamente",
+
+"color:#D4AF37;font-size:15px;font-weight:bold;"
+
+);

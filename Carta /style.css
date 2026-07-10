@@ -1,41 +1,41 @@
-/*====================================================
-    PARA TI - EDICIÓN DELUXE
-    VERSION 2.1
-====================================================*/
+/*==================================================
+            PARA TI - DELUXE
+            Release Final RC 1.0
+==================================================*/
 
-
-/*==========================
-    VARIABLES
-==========================*/
+/*==================================================
+                VARIABLES
+==================================================*/
 
 :root{
 
+    --wine:#6E1833;
+    --wine-dark:#4E1023;
+
     --gold:#D4AF37;
-    --gold-light:#F6E7A8;
+    --gold-light:#F4D76A;
 
-    --wine:#7B1234;
-    --wine-dark:#4D0D21;
+    --cream:#FFF8F0;
 
-    --paper:#FDF9F2;
-
-    --white:#FFFFFF;
-
-    --text:#2C2C2C;
+    --text:#333333;
 
     --shadow:
-    0 20px 60px rgba(0,0,0,.45);
+        0 25px 70px rgba(0,0,0,.35);
+
+    --radius:24px;
+
+    --transition:.35s ease;
 
 }
 
 
-/*==========================
-RESET
-==========================*/
+/*==================================================
+                RESET
+==================================================*/
 
 *{
 
     margin:0;
-
     padding:0;
 
     box-sizing:border-box;
@@ -43,978 +43,572 @@ RESET
 }
 
 
-/*==========================
-BODY
-==========================*/
+html{
+
+    scroll-behavior:smooth;
+
+}
+
 
 body{
 
-    width:100%;
+    font-family:"Montserrat",sans-serif;
 
-    min-height:100vh;
+    background:
+    linear-gradient(
+        160deg,
+        #4B0F28,
+        #6E1833,
+        #8A1D47
+    );
+
+    color:var(--cream);
 
     overflow:hidden;
 
-    background:
-    radial-gradient(circle at top,
-    #4A1023,
-    #18070F,
-    #090909);
-
-    color:white;
-
-    font-family:"Cormorant Garamond", serif;
-
-    position:relative;
+    min-height:100vh;
 
 }
 
 
-/*==========================
-LUZ CENTRAL
-==========================*/
+/*==================================================
+                FONDO
+==================================================*/
 
 body::before{
 
-content:"";
+    content:"";
 
-position:fixed;
+    position:fixed;
 
-left:50%;
+    inset:0;
 
-top:50%;
+    background:
 
-width:900px;
+    radial-gradient(
 
-height:900px;
+        circle at top,
 
-transform:
-translate(-50%,-50%);
+        rgba(255,255,255,.08),
 
-border-radius:50%;
+        transparent 60%
 
-background:
+    );
 
-radial-gradient(circle,
-
-rgba(255,220,120,.18),
-
-transparent 70%);
-
-animation:
-
-lightPulse 8s ease infinite;
-
-pointer-events:none;
-
-z-index:-1;
-
-}
-
-@keyframes lightPulse{
-
-0%{
-
-transform:
-
-translate(-50%,-50%)
-
-scale(1);
-
-}
-
-50%{
-
-transform:
-
-translate(-50%,-50%)
-
-scale(1.18);
-
-}
-
-100%{
-
-transform:
-
-translate(-50%,-50%)
-
-scale(1);
-
-}
+    pointer-events:none;
 
 }
 
 
-/*==========================
-PARTÍCULAS
-==========================*/
+/*==================================================
+                PARTÍCULAS
+==================================================*/
 
 #particles{
 
-position:fixed;
+    position:fixed;
 
-inset:0;
+    inset:0;
 
-pointer-events:none;
+    overflow:hidden;
 
-overflow:hidden;
+    pointer-events:none;
 
-z-index:1;
+    z-index:1;
 
 }
 
 
-/*==========================
-PANTALLAS
-==========================*/
+/*==================================================
+                CORTINAS
+==================================================*/
+
+.curtain{
+
+    position:fixed;
+
+    top:0;
+
+    width:50%;
+
+    height:100vh;
+
+    background:
+
+    linear-gradient(
+
+        to bottom,
+
+        #4E1023,
+
+        #6E1833,
+
+        #3D0B1B
+
+    );
+
+    z-index:999;
+
+    transition:
+        transform 2.2s ease;
+
+}
+
+
+#curtainLeft{
+
+    left:0;
+
+    border-right:
+
+    2px solid
+
+    rgba(212,175,55,.35);
+
+}
+
+
+#curtainRight{
+
+    right:0;
+
+    border-left:
+
+    2px solid
+
+    rgba(212,175,55,.35);
+
+}
+
+
+/*==================================================
+            CONTENEDOR PRINCIPAL
+==================================================*/
+
+#app{
+
+    position:relative;
+
+    z-index:5;
+
+    width:100%;
+
+    height:100vh;
+
+}
+
+
+/*==================================================
+                PANTALLAS
+==================================================*/
 
 .screen{
 
-display:none;
+    display:none;
 
-width:100vw;
+    width:100%;
 
-height:100vh;
+    height:100vh;
 
-padding:40px;
+    justify-content:center;
 
-justify-content:center;
+    align-items:center;
 
-align-items:center;
-
-animation:fadeScreen 1s ease;
+    padding:40px;
 
 }
+
 
 .screen.active{
 
-display:flex;
+    display:flex;
+
+}/*==================================================
+            PANTALLA DE BIENVENIDA
+==================================================*/
+
+.hero{
+
+    width:100%;
+    max-width:900px;
+
+    text-align:center;
+
+    animation:fadeUp 1.2s ease;
+
+}
+
+.hero h1{
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:clamp(4rem,9vw,7rem);
+
+    color:var(--gold);
+
+    text-shadow:
+        0 0 15px rgba(212,175,55,.35);
+
+    margin-bottom:20px;
+
+}
+
+.subtitle{
+
+    font-size:1.3rem;
+
+    line-height:1.8;
+
+    color:var(--cream);
+
+    max-width:700px;
+
+    margin:0 auto 45px;
+
+    font-weight:300;
 
 }
 
 
-/*==========================
-ANIMACIÓN GENERAL
-==========================*/
+/*==================================================
+                TARJETA LOGIN
+==================================================*/
 
-@keyframes fadeScreen{
+.login-card{
 
-from{
+    width:100%;
+    max-width:520px;
 
-opacity:0;
+    background:
 
-transform:scale(.96);
+    rgba(255,255,255,.08);
+
+    backdrop-filter:blur(16px);
+
+    border:
+
+    1px solid rgba(255,255,255,.18);
+
+    border-radius:var(--radius);
+
+    padding:45px;
+
+    box-shadow:var(--shadow);
+
+    text-align:center;
 
 }
 
-to{
+.login-card h2{
 
-opacity:1;
+    font-family:"Great Vibes",cursive;
 
-transform:scale(1);
+    color:var(--gold);
+
+    font-size:3rem;
+
+    margin-bottom:20px;
 
 }
 
-}
+.login-card p{
 
+    margin-bottom:30px;
 
-/*==========================
-TARJETA
-==========================*/
-
-.card{
-
-position:relative;
-
-width:min(760px,94%);
-
-padding:55px;
-
-border-radius:30px;
-
-background:
-
-rgba(255,255,255,.08);
-
-backdrop-filter:
-
-blur(18px);
-
-border:
-
-1px solid rgba(255,255,255,.18);
-
-box-shadow:
-
-0 25px 70px rgba(0,0,0,.55);
-
-text-align:center;
-
-overflow:hidden;
+    line-height:1.7;
 
 }
 
 
-/*==========================
-VERSIÓN DELUXE
-==========================*/
+/*==================================================
+                INPUT
+==================================================*/
 
-.deluxe{
+.input-group{
 
-border:
+    display:flex;
 
-2px solid rgba(212,175,55,.20);
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.input-group input{
+
+    width:100%;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    border:
+
+    2px solid rgba(212,175,55,.25);
+
+    background:
+
+    rgba(255,255,255,.12);
+
+    color:white;
+
+    font-size:1rem;
+
+    outline:none;
+
+    transition:var(--transition);
+
+}
+
+.input-group input::placeholder{
+
+    color:rgba(255,255,255,.65);
+
+}
+
+.input-group input:focus{
+
+    border-color:var(--gold);
+
+    box-shadow:
+
+    0 0 18px rgba(212,175,55,.25);
 
 }
 
 
-/*==========================
-BRILLO DELUXE
-==========================*/
+/*==================================================
+                MENSAJE ERROR
+==================================================*/
 
-.deluxe::before{
+.error-message{
 
-content:"";
+    margin-top:20px;
 
-position:absolute;
+    color:#FFD7D7;
 
-top:-180%;
+    font-weight:600;
 
-left:-50%;
-
-width:60%;
-
-height:450%;
-
-background:
-
-linear-gradient(
-
-90deg,
-
-transparent,
-
-rgba(255,255,255,.28),
-
-transparent);
-
-transform:
-
-rotate(28deg);
-
-animation:
-
-glassLight 10s linear infinite;
-
-}
-
-@keyframes glassLight{
-
-0%{
-
-left:-80%;
-
-}
-
-100%{
-
-left:180%;
-
-}
+    min-height:28px;
 
 }
 
 
-/*==========================
-TIPOGRAFÍAS
-==========================*/
+/*==================================================
+                BOTONES
+==================================================*/
 
-h1{
+.primary-button,
+.secondary-button{
 
-font-family:"Great Vibes";
+    border:none;
 
-font-size:72px;
+    cursor:pointer;
 
-font-weight:400;
+    border-radius:18px;
 
-color:var(--gold);
+    padding:16px 34px;
 
-margin-bottom:10px;
+    font-size:1rem;
 
-text-shadow:
+    font-weight:600;
 
-0 0 18px rgba(212,175,55,.45);
-
-}
-
-h2{
-
-font-family:"Cinzel";
-
-font-size:26px;
-
-font-weight:600;
-
-margin-bottom:25px;
-
-color:white;
-
-}
-
-p{
-
-font-size:24px;
-
-line-height:1.8;
-
-margin-bottom:30px;
+    transition:var(--transition);
 
 }
 
 
-/*==========================
-LÍNEA DORADA
-==========================*/
+.primary-button{
 
-.gold-line{
+    background:var(--gold);
 
-width:220px;
+    color:#442100;
 
-height:3px;
+    box-shadow:
 
-margin:28px auto;
+    0 10px 25px rgba(212,175,55,.35);
 
-border-radius:30px;
+}
 
-background:
+.primary-button:hover{
 
-linear-gradient(
+    transform:
 
-90deg,
+    translateY(-3px);
 
-transparent,
+    box-shadow:
 
-var(--gold),
+    0 16px 35px rgba(212,175,55,.45);
 
-var(--gold-light),
+}
 
-var(--gold),
+.primary-button:active{
 
-transparent);
+    transform:scale(.98);
 
 }
 
 
-/*==========================
-CORAZÓN
-==========================*/
+.secondary-button{
 
-.crystal-heart{
+    background:
 
-font-size:52px;
+    rgba(255,255,255,.10);
 
-margin-bottom:18px;
+    color:white;
 
-color:#FFD8E7;
+    border:
 
-text-shadow:
-
-0 0 15px rgba(255,255,255,.65),
-
-0 0 30px rgba(255,105,180,.45);
-
-animation:
-
-heartFloat 2.5s ease-in-out infinite;
+    1px solid rgba(255,255,255,.25);
 
 }
 
-@keyframes heartFloat{
+.secondary-button:hover{
 
-0%,100%{
+    background:
 
-transform:
+    rgba(255,255,255,.18);
 
-translateY(0)
+    transform:
 
-scale(1);
-
-}
-
-50%{
-
-transform:
-
-translateY(-6px)
-
-scale(1.12);
-
-}
-
-}
-/*====================================================
-        CORTINAS CINEMATOGRÁFICAS
-====================================================*/
-
-#curtain{
-
-position:fixed;
-
-inset:0;
-
-z-index:99999;
-
-pointer-events:none;
-
-overflow:hidden;
-
-}
-
-.left-curtain,
-.right-curtain{
-
-position:absolute;
-
-top:0;
-
-width:50%;
-
-height:100%;
-
-background:
-
-linear-gradient(
-90deg,
-#24060F,
-#4C0E20,
-#741430,
-#4C0E20,
-#24060F);
-
-box-shadow:
-
-inset 0 0 90px rgba(0,0,0,.65);
-
-}
-
-.left-curtain{
-
-left:0;
-
-animation:openLeft 3.8s ease forwards;
-
-}
-
-.right-curtain{
-
-right:0;
-
-animation:openRight 3.8s ease forwards;
-
-}
-
-@keyframes openLeft{
-
-0%{
-
-transform:translateX(0);
-
-}
-
-100%{
-
-transform:translateX(-105%);
-
-}
-
-}
-
-@keyframes openRight{
-
-0%{
-
-transform:translateX(0);
-
-}
-
-100%{
-
-transform:translateX(105%);
-
-}
+    translateY(-2px);
 
 }
 
 
-/*====================================================
-            LUZ DE LA PORTADA
-====================================================*/
+/*==================================================
+                ESTADOS
+==================================================*/
 
-.light{
+button:disabled{
 
-position:absolute;
+    opacity:.55;
 
-left:50%;
+    cursor:not-allowed;
 
-top:50%;
-
-width:650px;
-
-height:650px;
-
-transform:translate(-50%,-50%);
-
-border-radius:50%;
-
-background:
-
-radial-gradient(circle,
-
-rgba(255,230,170,.18),
-
-transparent 72%);
-
-filter:blur(15px);
-
-animation:
-
-heroLight 8s ease-in-out infinite;
-
-pointer-events:none;
+    transform:none;
 
 }
 
-@keyframes heroLight{
+button:focus-visible,
+input:focus-visible{
 
-0%{
+    outline:
 
-transform:
+    3px solid rgba(212,175,55,.45);
 
-translate(-50%,-50%)
+    outline-offset:3px;
 
-scale(1);
+        }
+/*==================================================
+                    LIBRO
+==================================================*/
 
-}
+.book-container{
 
-50%{
+    width:100%;
+    max-width:1100px;
 
-transform:
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-translate(-50%,-50%)
-
-scale(1.18);
-
-}
-
-100%{
-
-transform:
-
-translate(-50%,-50%)
-
-scale(1);
+    animation:fadeUp 1s ease;
 
 }
-
-}
-
-
-/*====================================================
-          PORTADA DELUXE
-====================================================*/
-
-#welcome{
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-#welcome .card{
-
-animation:
-
-welcomeCard 2s ease;
-
-}
-
-@keyframes welcomeCard{
-
-from{
-
-opacity:0;
-
-transform:
-
-translateY(60px)
-
-scale(.90);
-
-}
-
-to{
-
-opacity:1;
-
-transform:
-
-translateY(0)
-
-scale(1);
-
-}
-
-}
-
-
-/*====================================================
-            BOTONES PREMIUM
-====================================================*/
-
-button{
-
-position:relative;
-
-overflow:hidden;
-
-padding:18px 42px;
-
-border:none;
-
-border-radius:60px;
-
-background:
-
-linear-gradient(
-
-135deg,
-
-#6E0F2C,
-
-#8F1D42,
-
-#B72C59);
-
-color:white;
-
-font-size:18px;
-
-font-family:"Montserrat";
-
-letter-spacing:1px;
-
-cursor:pointer;
-
-transition:.35s;
-
-box-shadow:
-
-0 12px 35px rgba(0,0,0,.35);
-
-}
-
-button:hover{
-
-transform:
-
-translateY(-4px)
-
-scale(1.02);
-
-box-shadow:
-
-0 0 30px rgba(212,175,55,.45);
-
-}
-
-button::before{
-
-content:"";
-
-position:absolute;
-
-left:-140%;
-
-top:0;
-
-width:50%;
-
-height:100%;
-
-background:
-
-rgba(255,255,255,.35);
-
-transform:
-
-skewX(-25deg);
-
-}
-
-button:hover::before{
-
-animation:
-
-buttonLight 1.2s;
-
-}
-
-@keyframes buttonLight{
-
-100%{
-
-left:160%;
-
-}
-
-}
-
-
-/*====================================================
-       INPUT CONTRASEÑA
-====================================================*/
-
-input{
-
-width:100%;
-
-padding:18px;
-
-margin:25px 0;
-
-border:none;
-
-outline:none;
-
-border-radius:16px;
-
-font-size:18px;
-
-text-align:center;
-
-font-family:"Montserrat";
-
-background:
-
-rgba(255,255,255,.90);
-
-transition:.35s;
-
-}
-
-input:focus{
-
-box-shadow:
-
-0 0 25px rgba(212,175,55,.55);
-
-}
-
-
-/*====================================================
-      MENSAJE DE ERROR
-====================================================*/
-
-#error{
-
-height:25px;
-
-font-size:17px;
-
-color:#FFD3D3;
-
-margin-top:10px;
-
-}
-
-
-/*====================================================
-      BRILLO DEL TÍTULO
-====================================================*/
-
-h1{
-
-animation:
-
-titleGlow 4s ease-in-out infinite;
-
-}
-
-@keyframes titleGlow{
-
-0%,100%{
-
-text-shadow:
-
-0 0 15px rgba(212,175,55,.35);
-
-}
-
-50%{
-
-text-shadow:
-
-0 0 35px rgba(255,221,120,.85);
-
-}
-
-}
-
-
-/*====================================================
-       EFECTO FLOTANTE
-====================================================*/
-
-.card{
-
-animation:
-
-floating 7s ease-in-out infinite;
-
-}
-
-@keyframes floating{
-
-0%,100%{
-
-transform:
-
-translateY(0);
-
-}
-
-50%{
-
-transform:
-
-translateY(-8px);
-
-}
-
-}/*====================================================
-            LIBRO DELUXE
-====================================================*/
 
 .book{
 
     position:relative;
 
-    width:min(950px,94vw);
+    width:100%;
+    max-width:850px;
 
-    min-height:650px;
+    min-height:600px;
 
-    padding:70px;
-
-    border-radius:18px;
-
-    background:
-    linear-gradient(
-        90deg,
-        #E9DFC8 0%,
-        #F8F2E8 8%,
-        #FFFDF9 50%,
-        #F8F2E8 92%,
-        #E9DFC8 100%
-    );
+    background:rgba(255,248,240,.98);
 
     color:var(--text);
 
+    border-radius:24px;
+
+    padding:60px;
+
+    box-shadow:var(--shadow);
+
     overflow:hidden;
 
-    box-shadow:
-        0 35px 90px rgba(0,0,0,.55);
+}
 
-    animation:
-        openBook 1.4s ease;
+
+/*==================================================
+                PORTADA
+==================================================*/
+
+.book-cover{
+
+    text-align:center;
+
+    margin-bottom:45px;
+
+}
+
+.book-cover h2{
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:4rem;
+
+    color:var(--wine);
+
+    margin-bottom:15px;
+
+}
+
+.book-cover p{
+
+    font-size:1.15rem;
+
+    color:#555;
 
 }
 
 
-/*====================================================
-            TAPA DE CUERO
-====================================================*/
+/*==================================================
+            INDICADOR DE PÁGINA
+==================================================*/
 
-.book::before{
-
-    content:"";
+.page-indicator{
 
     position:absolute;
 
-    inset:0;
+    top:25px;
+    right:35px;
 
-    border-radius:18px;
+    padding:8px 18px;
 
-    padding:10px;
+    border-radius:50px;
 
-    background:
-    linear-gradient(
-        135deg,
-        #6E3A15,
-        #8A5427,
-        #6E3A15
-    );
+    background:rgba(110,24,51,.08);
 
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
+    color:var(--wine);
 
-    -webkit-mask-composite:xor;
+    font-size:.90rem;
 
-    mask-composite:exclude;
+    font-weight:600;
 
 }
 
 
-/*====================================================
-          SOMBRA CENTRAL DEL LIBRO
-====================================================*/
-
-.book::after{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:50%;
-
-    width:14px;
-
-    height:100%;
-
-    transform:translateX(-50%);
-
-    background:
-
-    linear-gradient(
-
-        90deg,
-
-        rgba(0,0,0,.25),
-
-        rgba(255,255,255,.18),
-
-        rgba(0,0,0,.25)
-
-    );
-
-}
-
-
-/*====================================================
-              PÁGINAS
-====================================================*/
+/*==================================================
+                    PÁGINAS
+==================================================*/
 
 .page{
 
     display:none;
 
-    animation:
-
-        pageFade .9s ease;
+    animation:pageFade .7s ease;
 
 }
 
@@ -1024,182 +618,674 @@ translateY(-8px);
 
 }
 
-
-/*====================================================
-          TÍTULO DEL LIBRO
-====================================================*/
-
 .page h2{
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:3rem;
 
     color:var(--wine);
 
-    font-size:34px;
-
-    text-align:center;
-
-    margin-bottom:40px;
+    margin-bottom:30px;
 
 }
-
-
-/*====================================================
-           TEXTO
-====================================================*/
 
 .page p{
 
-    color:#3D3D3D;
-
-    font-size:29px;
+    font-size:1.15rem;
 
     line-height:2;
 
-    text-align:justify;
+    margin-bottom:25px;
+
+    color:#444;
 
 }
 
 
-/*====================================================
-          BOTÓN SIGUIENTE
-====================================================*/
+/*==================================================
+                FOTOGRAFÍA
+==================================================*/
 
-.page button{
+.photo-frame{
 
-    margin-top:45px;
+    width:320px;
+
+    margin:35px auto;
+
+    padding:12px;
+
+    background:white;
+
+    border-radius:22px;
+
+    box-shadow:
+
+        0 25px 60px rgba(0,0,0,.25);
+
+    transition:var(--transition);
+
+}
+
+.photo-frame:hover{
+
+    transform:
+
+        scale(1.03);
+
+}
+
+.photo-frame img{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:16px;
+
+}
+
+.photo-text{
+
+    text-align:center;
+
+    font-style:italic;
+
+    color:#666;
 
 }
 
 
-/*====================================================
-       MARCADOR DE TELA
-====================================================*/
+/*==================================================
+            CONTROLES DEL LIBRO
+==================================================*/
 
-.book .bookmark{
+.book-controls{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-top:50px;
+
+}
+
+.book-controls button{
+
+    min-width:180px;
+
+}
+
+
+/*==================================================
+                EFECTOS
+==================================================*/
+
+.book{
+
+    animation:
+
+        bookOpen 1s ease;
+
+}
+
+.page.active{
+
+    animation:
+
+        pageTurn .65s ease;
+
+}
+
+
+/*==================================================
+                SEPARADOR
+==================================================*/
+
+.book::before{
+
+    content:"";
 
     position:absolute;
 
     top:0;
 
-    right:65px;
+    left:50%;
 
-    width:18px;
+    width:2px;
 
-    height:150px;
+    height:100%;
 
     background:
 
-    linear-gradient(
+        linear-gradient(
 
-        #8B102F,
+            transparent,
 
-        #D42A56
+            rgba(0,0,0,.12),
 
-    );
+            transparent
 
-    border-radius:
+        );
 
-        0 0 10px 10px;
+    transform:translateX(-50%);
+
+    pointer-events:none;
 
 }
 
 
-/*====================================================
-       ESQUINAS DORADAS
-====================================================*/
+/*==================================================
+            BRILLO DECORATIVO
+==================================================*/
 
-.book .corner{
+.book::after{
+
+    content:"";
 
     position:absolute;
 
-    width:28px;
+    inset:0;
 
-    height:28px;
+    background:
 
-    border:2px solid var(--gold);
+        linear-gradient(
 
-}
+            120deg,
 
-.book .tl{
+            transparent,
 
-    left:20px;
+            rgba(255,255,255,.18),
 
-    top:20px;
+            transparent
 
-    border-right:none;
+        );
 
-    border-bottom:none;
-
-}
-
-.book .tr{
-
-    right:20px;
-
-    top:20px;
-
-    border-left:none;
-
-    border-bottom:none;
-
-}
-
-.book .bl{
-
-    left:20px;
-
-    bottom:20px;
-
-    border-right:none;
-
-    border-top:none;
-
-}
-
-.book .br{
-
-    right:20px;
-
-    bottom:20px;
-
-    border-left:none;
-
-    border-top:none;
+    pointer-events:none;
 
 }
 
 
-/*====================================================
-          ANIMACIONES
-====================================================*/
+/*==================================================
+                RESPONSIVE
+==================================================*/
 
-@keyframes openBook{
+@media (max-width:900px){
+
+.book{
+
+    padding:35px;
+
+}
+
+.page h2{
+
+    font-size:2.3rem;
+
+}
+
+.page p{
+
+    font-size:1.02rem;
+
+}
+
+.photo-frame{
+
+    width:250px;
+
+}
+
+.book-controls{
+
+    flex-direction:column;
+
+}
+
+.book-controls button{
+
+    width:100%;
+
+}
+
+    }/*==================================================
+                PANTALLA FINAL
+==================================================*/
+
+.final-card{
+
+    width:100%;
+    max-width:900px;
+
+    padding:60px 50px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    animation:fadeUp 1s ease;
+
+}
+
+.final-card h1{
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:5rem;
+
+    color:var(--gold);
+
+    margin-bottom:25px;
+
+}
+
+.final-card p{
+
+    max-width:700px;
+
+    margin:0 auto;
+
+    font-size:1.25rem;
+
+    line-height:2;
+
+    color:var(--cream);
+
+}
+
+
+/*==================================================
+                CORAZÓN
+==================================================*/
+
+.heart-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:45px 0;
+
+}
+
+.heart{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:120px;
+
+    height:120px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            #ff7da0,
+
+            #d4145a
+
+        );
+
+    color:white;
+
+    font-size:3.5rem;
+
+    box-shadow:
+
+        0 0 35px rgba(255,20,90,.45);
+
+    animation:
+
+        heartbeat 1.5s infinite ease-in-out;
+
+}
+
+
+/*==================================================
+                PÉTALOS
+==================================================*/
+
+.petal{
+
+    position:fixed;
+
+    top:-40px;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50% 0 50% 50%;
+
+    background:
+
+        linear-gradient(
+
+            145deg,
+
+            #ffd4e2,
+
+            #ff6f91
+
+        );
+
+    opacity:.85;
+
+    pointer-events:none;
+
+    z-index:2;
+
+}
+
+
+/*==================================================
+                CONFETI
+==================================================*/
+
+.confetti{
+
+    position:fixed;
+
+    width:12px;
+
+    height:12px;
+
+    pointer-events:none;
+
+    z-index:30;
+
+}
+
+
+/*==================================================
+            MENSAJE NOSCRIPT
+==================================================*/
+
+.noscript-message{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px;
+
+    background:#fff;
+
+    color:#222;
+
+    z-index:5000;
+
+}
+
+.noscript-message h2{
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:3rem;
+
+    color:var(--wine);
+
+    margin-bottom:20px;
+
+}
+
+.noscript-message p{
+
+    max-width:650px;
+
+    line-height:1.8;
+
+}
+
+
+/*==================================================
+            EFECTOS GENERALES
+==================================================*/
+
+.glow{
+
+    animation:
+
+        glowPulse 2.5s infinite ease-in-out;
+
+}
+
+.fade-in{
+
+    animation:
+
+        fadeUp .9s ease both;
+
+}
+
+.hidden{
+
+    display:none !important;
+
+}
+
+
+/*==================================================
+            RESPONSIVE TABLET
+==================================================*/
+
+@media (max-width:768px){
+
+.final-card{
+
+    padding:40px 28px;
+
+}
+
+.final-card h1{
+
+    font-size:3.8rem;
+
+}
+
+.final-card p{
+
+    font-size:1.08rem;
+
+}
+
+.heart{
+
+    width:95px;
+
+    height:95px;
+
+    font-size:2.8rem;
+
+}
+
+}
+
+
+/*==================================================
+            RESPONSIVE MÓVIL
+==================================================*/
+
+@media (max-width:480px){
+
+.screen{
+
+    padding:20px;
+
+}
+
+.hero h1{
+
+    font-size:3.8rem;
+
+}
+
+.subtitle{
+
+    font-size:1.05rem;
+
+}
+
+.login-card{
+
+    padding:30px 22px;
+
+}
+
+.book{
+
+    padding:25px;
+
+}
+
+.page h2{
+
+    font-size:2rem;
+
+}
+
+.page p{
+
+    font-size:1rem;
+
+    line-height:1.8;
+
+}
+
+.photo-frame{
+
+    width:210px;
+
+}
+
+.final-card{
+
+    padding:30px 22px;
+
+}
+
+.final-card h1{
+
+    font-size:3.2rem;
+
+}
+
+.final-card p{
+
+    font-size:1rem;
+
+}
+
+.primary-button,
+
+.secondary-button{
+
+    width:100%;
+
+}
+
+}
+
+
+/*==================================================
+        PANTALLAS MUY PEQUEÑAS
+==================================================*/
+
+@media (max-width:360px){
+
+.hero h1{
+
+    font-size:3rem;
+
+}
+
+.login-card h2{
+
+    font-size:2.4rem;
+
+}
+
+.page h2{
+
+    font-size:1.8rem;
+
+}
+
+.page p{
+
+    font-size:.95rem;
+
+}
+
+.photo-frame{
+
+    width:180px;
+
+}
+
+.heart{
+
+    width:80px;
+
+    height:80px;
+
+    font-size:2.2rem;
+
+}
+
+    }/*==================================================
+                ANIMACIONES
+==================================================*/
+
+@keyframes fadeUp{
 
     from{
 
         opacity:0;
-
-        transform:
-
-            rotateY(18deg)
-
-            scale(.92);
+        transform:translateY(35px);
 
     }
 
     to{
 
         opacity:1;
-
-        transform:
-
-            rotateY(0)
-
-            scale(1);
+        transform:translateY(0);
 
     }
 
 }
-
 
 @keyframes pageFade{
 
@@ -1207,9 +1293,107 @@ translateY(-8px);
 
         opacity:0;
 
-        transform:
+    }
 
-            translateX(35px);
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes pageTurn{
+
+    0%{
+
+        opacity:0;
+        transform:
+            rotateY(-12deg)
+            translateX(18px);
+
+    }
+
+    100%{
+
+        opacity:1;
+        transform:
+            rotateY(0)
+            translateX(0);
+
+    }
+
+}
+
+@keyframes heartbeat{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    20%{
+
+        transform:scale(1.08);
+
+    }
+
+    40%{
+
+        transform:scale(.96);
+
+    }
+
+    60%{
+
+        transform:scale(1.12);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes glowPulse{
+
+    0%{
+
+        box-shadow:
+        0 0 15px rgba(212,175,55,.20);
+
+    }
+
+    50%{
+
+        box-shadow:
+        0 0 40px rgba(212,175,55,.55);
+
+    }
+
+    100%{
+
+        box-shadow:
+        0 0 15px rgba(212,175,55,.20);
+
+    }
+
+}
+
+@keyframes bookOpen{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            perspective(1200px)
+            rotateY(-10deg)
+            scale(.97);
 
     }
 
@@ -1218,378 +1402,160 @@ translateY(-8px);
         opacity:1;
 
         transform:
-
-            translateX(0);
+            perspective(1200px)
+            rotateY(0)
+            scale(1);
 
     }
 
 }
-/*====================================================
-        PANTALLA FINAL
-====================================================*/
 
-#final{
+@keyframes floatPetal{
 
-    position:relative;
+    from{
 
-    overflow:hidden;
+        transform:
+            translateY(-20px)
+            rotate(0deg);
+
+        opacity:0;
+
+    }
+
+    15%{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity:0;
+
+    }
 
 }
 
+@keyframes shimmer{
 
-/*====================================================
-        MARCO FOTOGRÁFICO DELUXE
-====================================================*/
+    from{
 
-.photo{
+        background-position:-250px 0;
 
-    width:260px;
+    }
 
-    height:260px;
+    to{
 
-    object-fit:cover;
+        background-position:250px 0;
 
-    border-radius:50%;
+    }
 
-    border:8px solid transparent;
+}
 
-    background:
-    linear-gradient(var(--paper),var(--paper)) padding-box,
-    linear-gradient(
-        135deg,
-        #FFF6C8,
-        #D4AF37,
-        #FFF6C8,
-        #C4931A
-    ) border-box;
+/*==================================================
+            CLASES AUXILIARES
+==================================================*/
 
-    box-shadow:
-        0 0 25px rgba(212,175,55,.45),
-        0 20px 50px rgba(0,0,0,.35);
+.fade-enter{
 
     animation:
-        photoFloat 6s ease-in-out infinite;
+        fadeUp .6s ease both;
 
 }
 
-
-/*====================================================
-        AUREOLA DE LUZ
-====================================================*/
-
-.photo::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:-20px;
-
-    border-radius:50%;
-
-    background:
-    radial-gradient(circle,
-    rgba(255,220,120,.20),
-    transparent 70%);
-
-}
-
-
-/*====================================================
-        CORAZÓN FINAL
-====================================================*/
-
-.heart{
-
-    margin:30px auto;
-
-    font-size:90px;
-
-    color:#FF4D6D;
+.page-transition{
 
     animation:
-        heartbeat 1.4s infinite;
-
-    filter:
-        drop-shadow(0 0 12px rgba(255,77,109,.55));
+        pageTurn .6s ease both;
 
 }
 
-@keyframes heartbeat{
+.glass{
 
-0%{
+    backdrop-filter:blur(16px);
 
-transform:scale(1);
-
-}
-
-20%{
-
-transform:scale(1.15);
+    -webkit-backdrop-filter:blur(16px);
 
 }
 
-40%{
+.shadow{
 
-transform:scale(.96);
-
-}
-
-60%{
-
-transform:scale(1.18);
+    box-shadow:var(--shadow);
 
 }
 
-100%{
+.text-center{
 
-transform:scale(1);
-
-}
+    text-align:center;
 
 }
 
+.hidden{
 
-/*====================================================
-        MENSAJE FINAL
-====================================================*/
-
-#final p{
-
-    max-width:650px;
-
-    margin:auto;
-
-    line-height:2;
-
-    font-size:24px;
+    display:none !important;
 
 }
 
+.visible{
 
-/*====================================================
-        BOTÓN FINAL
-====================================================*/
-
-#restart{
-
-    margin-top:40px;
+    display:block !important;
 
 }
 
+/*==================================================
+            OPTIMIZACIÓN
+==================================================*/
 
-/*====================================================
-        ANIMACIÓN FOTOGRAFÍA
-====================================================*/
+img{
 
-@keyframes photoFloat{
+    max-width:100%;
 
-0%,100%{
-
-transform:
-translateY(0)
-scale(1);
-
-}
-
-50%{
-
-transform:
-translateY(-10px)
-scale(1.02);
-
-}
-
-}
-
-
-/*====================================================
-        RESPONSIVE
-====================================================*/
-
-@media(max-width:900px){
-
-.card{
-
-padding:35px;
-
-}
-
-.book{
-
-padding:40px;
-
-min-height:auto;
-
-}
-
-.page p{
-
-font-size:23px;
-
-}
-
-.photo{
-
-width:220px;
-
-height:220px;
-
-}
-
-}
-
-@media(max-width:600px){
-
-h1{
-
-font-size:52px;
-
-}
-
-h2{
-
-font-size:21px;
-
-}
-
-p{
-
-font-size:20px;
-
-}
-
-.page p{
-
-font-size:20px;
-
-line-height:1.8;
-
-}
-
-.card{
-
-padding:28px;
-
-}
-
-.book{
-
-padding:28px;
-
-}
-
-.photo{
-
-width:180px;
-
-height:180px;
+    height:auto;
 
 }
 
 button{
 
-width:100%;
-
-font-size:17px;
+    font-family:inherit;
 
 }
 
 input{
 
-font-size:17px;
+    font-family:inherit;
+
+}
+
+audio{
+
+    display:none;
+
+}
+
+/*==================================================
+        REDUCCIÓN DE MOVIMIENTO
+==================================================*/
+
+@media (prefers-reduced-motion:reduce){
+
+*{
+
+    animation-duration:.01ms !important;
+
+    animation-iteration-count:1 !important;
+
+    transition-duration:.01ms !important;
+
+    scroll-behavior:auto !important;
 
 }
 
 }
 
-
-/*====================================================
-        FONDO CON DESTELLOS
-====================================================*/
-
-body::after{
-
-content:"";
-
-position:fixed;
-
-inset:0;
-
-pointer-events:none;
-
-background-image:
-
-radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
-
-background-size:60px 60px;
-
-opacity:.25;
-
-animation:
-
-starsMove 30s linear infinite;
-
-}
-
-@keyframes starsMove{
-
-from{
-
-transform:translateY(0);
-
-}
-
-to{
-
-transform:translateY(-120px);
-
-}
-
-}
-
-/*====================================================
-        INDICADOR DE PÁGINAS
-====================================================*/
-
-#pageIndicator{
-
-letter-spacing:2px;
-
-font-weight:600;
-
-user-select:none;
-
-}
-
-/*====================================================
-        DESTELLOS Y EFECTOS FINALES
-====================================================*/
-
-.photo{
-
-transition:
-transform .8s,
-box-shadow .8s;
-
-}
-
-.photo:hover{
-
-transform:
-scale(1.04);
-
-}
-
-.heart{
-
-transition:
-transform .5s;
-
-}
-
-#particles{
-
-overflow:hidden;
-
-}
+/*==================================================
+            FIN DEL ARCHIVO
+==================================================*/
